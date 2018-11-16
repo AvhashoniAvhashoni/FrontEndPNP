@@ -64,8 +64,8 @@
     display: inline-block;
     height: 300px !important;
     margin-bottom: 10px;
-    text-align: center;
     vertical-align: bottom;
+    padding: 10px;
 }
 
 .itm .items .item p {
@@ -92,14 +92,21 @@
     width: 100%;
 }
 
-.normalPrice {
+.itm .items .normalPrice {
 	font-size: 18px;
 	font-family: Arial, Helvetica, sans-serif;
 }
 
-.normalPrice span {
+.itm .items .normalPrice span {
 	font-size: 10px;
 	position: relative;
 	top: -6px;
 	left: 1px;
+}
+
+.itm .items button {
+    width: 35px;
+    height: 35px;
+    border: none;
+    margin-right: 10px;
 }
