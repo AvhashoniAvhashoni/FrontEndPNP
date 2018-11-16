@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+input:focus {
+    outline: none;
+}
+
+button:focus {
+    outline: none;
+}
+
+@media only screen and (max-width: 600px) {
+    body {
+        background-color: white;
+    }
+}
