@@ -1,0 +1,60 @@
+<app-header></app-header>
+<div class="mainDiv">
+  <div class="div1">
+    <div class="item">
+      <img src="/app/images/item/silo-6001710010253-front-335393_400Wx400H.jpg">
+    </div>
+    
+    <div class="itemDet">
+      <h1>Sasko Premium Brown<br/>Bread Slices 700g</h1>
+
+      <div class="normalPrice">
+        R12<span>49</span>
+      </div>
+      <p><button class="negPos" (click)="subtractOn()">-</button> {{i}} <button class="negPos" style="margin-left: 10px;" (click)="addOn()">+</button></p>
+      <button class="add2t">Add to trolley</button>
+      <br/>
+      <div class="reviews">
+        <div class="rating-stars">
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+          <span class="glyphicon glyphicon-star"></span>
+        </div>
+        <p>0 Reviews <span style="color:#dee3e8;">|</span> Review this item</p>
+      </div>
+      <br/>
+      <button class="add2l">ADD TO MY LIST</button>
+    </div>
+
+    <div class="ssbtn" >
+      <button><img src="/app/images/item/download.png">Smart Shopper <span style="float:right">></span> </button>
+    </div>
+  </div>
+
+  <div class="imgDisply">
+    <img src="/app/images/item/silo-6001710010253-front-335393_96Wx96H.jpg">
+  </div>
+
+  <div class="product">
+    <div class="tab">
+      <button class="tablinks" onclick="openCity(event, 'prodInfo')">PRODUCT INFORMATION &#709;</button>
+      <button class="tablinks" onclick="openCity(event, 'reviews')">REVIEWS &#709;</button>
+    </div>
+
+    <div id="prodInfo" class="tabcontent" style="display:block">
+      <p>DESCRIPTION:
+      <span>Every day Sasko bread is delivered to millions of South Africans, tickling tastebuds and filling stomachs for more than 80 years. Since the first loaf was baked back in 1930, Sasko has used only the finest ingredients, milled, mixed and baked to tasty perfection. A dedicated research and development team keeps us at the forefront of baking and innovation. At Sasko we use the most advanced baking techniques and with our world-class bakeries all across South Africa you can be sure to enjoy locally baked, great quality breads every day. That quality shines through in soft, delicious slices that give every nutritious, energy-filled bite a touch of greatness. So toast, spread, dip, grill, braai and munch this Sasko loaf any way you want to and enjoy every slice.</span>
+      </p>
+      <p>BARCODE: <span>6001710010253</span></p>
+      
+      <div class="tabcontentshade">We recommend that you do not rely solely on this information and always check product labels. Where dietary or other information is important to you please contact Pick n Pay Customer Services if the poduct is Pick n Pay branded or otherwise the product manufacturer. Although we strive to keep this information as accurate as possible, Pick n Pay are unable to accept liability for any incorrect information. This does not affect your statutory rights.</div>
+    </div>
+
+    <div id="reviews" class="tabcontent">
+      <button>Review This Item</button> 
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,70 @@
+<header>
+  <div class="nav-top">
+      YOU ARE BROWSING:
+          <form>
+              <button><u><a routerLink="/app-login">LOG IN</a></u></button>
+              |
+              <button><u><a routerLink="/app-register">SIGN UP</a></u></button>
+          </form>
+  </div>
+
+  <div class="nav-middle">
+      <div class="logo">
+          <a routerLink="/app-home"><img src ='/app/images/header/onlineshopping_logo.png'></a>
+      </div>
+      <div class="flt-right">
+          <form>
+              <input type="search" name="search" placeholder="I'm looking for"><button class="gicon-btn"><span class="glyphicon glyphicon-search"></span></button>
+              <button type="submit" name="favourites" class="btn1">FAVOURITES</button>
+              <button type="submit" name="shopList" class="btn2">SHOPPING LIST</button>
+              <img src="/app/images/header/delivery-icon-nav.png">
+              <img class="trolley" src="/app/images/header/trolley.png">
+          </form>
+      </div>
+
+  </div>
+  <div class="nav-bottom">
+      <div class="dropdown">
+          <button routerLink="/app-aisle" class="dropbtn">SHOP BY AISLE</button>
+          <div class="dropdown-content">
+              <a *ngFor="let aisleM of aisleMod" routerLink="/app-item">{{aisleM.name}}</a>
+          </div>
+      </div>
+      <div class="dropdown">
+          <button class="dropbtn">SPECIALS</button>
+          <div class="dropdown-content">
+
+          </div>
+      </div>
+      <div class="dropdown">
+          <button class="dropbtn">INSPERATION & OCCASIONS</button>
+          <div class="dropdown-content">
+
+          </div>
+      </div>
+      <div class="dropdown">
+          <button class="dropbtn">RECIPES</button>
+          <div class="dropdown-content">
+              <a href="#">SUMMER SAVINGS</a>
+              <a href="#">ITALIAN FESTIVAL</a>
+              <a href="#">NEW FRESHRANGE</a>
+              <a href="#">BRAAI</a>
+              <a href="#">BURGER FRIDAYS!</a>
+              <a href="#">SOIREE WITH PICK N PAY</a>
+              <a href="#">ALL ABOUT GIN</a>
+              <a href="#">HERITAGE DAY RECIPES</a>
+          </div>
+      </div>
+      <div class="dropdown">
+          <button class="dropbtn">COMPETITIONS</button>
+          <div class="dropdown-content">
+
+          </div>
+      </div>
+      <div class="dropdown">
+          <button class="dropbtn">IN-STORE CATALOGUES</button>
+          <div class="dropdown-content">
+          </div>
+      </div>
+  </div>
+</header>

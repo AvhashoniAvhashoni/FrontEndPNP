@@ -1,0 +1,60 @@
+<app-header></app-header>
+<div style="border-top: solid 1px #f1f1f1;"></div>
+<div class="itm">
+  <div class="filterLft">
+    <div class="filter">
+      <label><b>FILTERED</b> BY CATEGORY</label>
+      SLICED BREAD  (16)<br/>
+      CHRISTMAS BAKERY  (12)<br/>
+      BREAD  (7)<br/>
+      SLICED LOW GI BREAD  (7)<br/>
+      SLICED WHITE BREAD 
+      <label class="more"><b>MORE</b> CATEGORIES</label>
+    </div>
+    <div class="filter">
+      <label><b>FILTERED</b> BY ON PROMOTION</label>
+    </div>
+    <div class="filter">
+      <label><b>FILTERED</b> BY PRICE</label>
+    </div>
+    <div class="filter">
+      <label><b>FILTERED</b> BY BRAND</label>
+    </div>
+    <div class="filter">
+      <label><b>FILTERED</b> BY DISCOVERY VITALITY</label>
+    </div>
+    <div class="filter">
+      <label><b>FILTERED</b> BY UNIT OF MEASURE</label>
+    </div>
+  </div>
+
+  <div class="fltRight">
+    <button class="ss"></button>
+    <img src="/app/images/aisle/delivery.JPG" class="delivery">
+    <div>
+        Do we deliver to your area?
+        <input placeholder="Please Select a City">
+        <input placeholder="Select City From List">
+        <button>Suggest Your Surbub</button>
+    </div>
+  </div>
+
+  <div class="items">
+    <div class="filterTop">
+      SHOWING 1-18 OF 28 SHOW SORT BY
+    </div>  
+    
+    <div class="item" *ngFor="let items of itms; let i of index" >
+      
+        <img src="/app/images/items/product1/{{items.image}}">
+        <p>{{items.name}} {{items.weight}}</p>
+        
+        <p>R{{items?.price}}</p>
+        <p class="normalPrice">
+          R12<span>49</span>
+        </p>
+    </div>
+  </div>
+
+</div>
+<app-footer></app-footer>
