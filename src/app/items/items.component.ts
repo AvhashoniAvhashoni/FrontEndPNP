@@ -13,11 +13,21 @@ export class ItemsComponent implements OnInit {
   public prd: ProductModModule;
 
   constructor(private _itemService: PicknpayService) { }
-
+  
   ngOnInit() {
     this.getItemsData();
   }
 
+  addQty(obj: ItemsModModule){
+    obj.quantity++;
+    console.log(obj.quantity)
+  }
+
+  subtractQty(obj: ItemsModModule){
+    if (obj.quantity > 1){
+      obj.quantity--;
+    }
+  }
 
   getItemsData() {
     this._itemService.getItems()

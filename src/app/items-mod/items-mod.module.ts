@@ -21,4 +21,5 @@ export class ItemsModModule {
   unit: number;
   weight: string;
   pid: number;
+  quantity: number;
 }
