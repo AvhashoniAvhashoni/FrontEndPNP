@@ -11,16 +11,23 @@ import { PicknpayService } from '../picknpay.service';
 export class ItemsComponent implements OnInit {
   public itms: ItemsModModule;
   public prd: ProductModModule;
+  public itmz: ItemsModModule;
 
   constructor(private _itemService: PicknpayService) { }
   
   ngOnInit() {
     this.getItemsData();
+
+    this.getCartItems();
+  }
+
+  getCartItems() {
+    this._itemService.getTempCart()
+      .subscribe((res) => this.itmz = JSON.parse(res["_body"]));
   }
 
   addQty(obj: ItemsModModule){
     obj.quantity++;
-    console.log(obj.quantity)
   }
 
   subtractQty(obj: ItemsModModule){
@@ -32,5 +39,26 @@ export class ItemsComponent implements OnInit {
   getItemsData() {
     this._itemService.getItems()
       .subscribe((resItemData) => this.itms = JSON.parse(resItemData["_body"]));
+  }
+
+  addToTempCart(items: ItemsModModule) {
+    var j = 0;
+    
+    for (let i = 0; i < Object.keys(this.itmz).length; i++) {
+      if (this.itmz[i].id == items.id) {
+        j = 1;
+        break;
+      }
+    }
+    if (j == 1) {
+      console.log(j);
+    } else {
+      if (j == 0) {
+        this._itemService.addToTempCart(items).subscribe((itm) => {
+        }, (error) => { });
+        console.log(j);
+      }
+    }
+    this.getCartItems();
   }
 }

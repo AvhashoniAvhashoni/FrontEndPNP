@@ -21,6 +21,7 @@ import { RegisterSmartShopperComponent } from './register-smart-shopper/register
 import { AisleComponent } from './aisle/aisle.component';
 import { ProductComponent } from './product/product.component';
 import { ItemsComponent } from './items/items.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { ItemsComponent } from './items/items.component';
     RegisterSmartShopperComponent,
     AisleComponent,
     ProductComponent,
-    ItemsComponent
+    ItemsComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

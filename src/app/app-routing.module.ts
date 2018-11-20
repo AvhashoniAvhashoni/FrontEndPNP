@@ -16,6 +16,9 @@ import { LoginHeaderComponent } from './login-header/login-header.component';
 import { AisleComponent } from './aisle/aisle.component';
 import { ProductComponent } from './product/product.component';
 import { ItemsComponent } from './items/items.component';
+import { CartComponent } from './cart/cart.component';
+
+import { from } from 'rxjs';
 
 const routes: Routes = [
   {path:'', pathMatch:'full', redirectTo:'app-home'},
@@ -35,6 +38,7 @@ const routes: Routes = [
   {path: 'app-aisle', component:AisleComponent },
   {path: 'app-product', component:ProductComponent },
   {path: 'app-items', component:ItemsComponent },
+  {path: 'app-cart', component:CartComponent},
 ];
 
 @NgModule({

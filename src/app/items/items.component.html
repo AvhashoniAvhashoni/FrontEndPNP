@@ -42,8 +42,12 @@
   <div class="items">
     <div class="filterTop">
       SHOWING 1-18 OF 28 SHOW SORT BY
-    </div>  
+    </div>
     
+    <!--Get cart items-->
+    <div *ngFor="let items of itmz">
+    </div>
+
     <div class="item" *ngFor="let items of itms; let i of index" >
       
         <img src="/app/images/items/product1/{{items.image}}">
@@ -59,9 +63,9 @@
         <button style="margin-left:10px;" (click)="addQty(items)">
           +
         </button>
-        <button class="trolley">Add to trolley</button>
+        <button class="trolley" (click)="addToTempCart(items)">Add to trolley</button>
     </div>
   </div>
-
+  
 </div>
 <app-footer></app-footer>
