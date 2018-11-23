@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { PicknpayService } from '../picknpay.service';
+import { ItemsModModule } from '../items-mod/items-mod.module';
 
 @Component({
   selector: 'app-cart',
@@ -7,12 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CartComponent implements OnInit {
   
+  public itms: ItemsModModule;
+
   select = "select all";
   collaps = "collepse all";
 
-  constructor() { }
+  constructor(private _cartService: PicknpayService) { }
 
   ngOnInit() {
+    this.getfrmItms();
   }
 
   slct() {
@@ -33,4 +38,21 @@ export class CartComponent implements OnInit {
     }
   }
 
+  getfrmItms() {
+    this._cartService.getTempCart().subscribe((res) => this.itms = JSON.parse(res["_body"]));;
+  }
+
+  addqty(item: ItemsModModule) {
+    var oldPrice = item.price/item.quantity;
+    item.quantity++;
+    item.price = item.price + (oldPrice);
+  }
+
+  subqty(item: ItemsModModule) {
+    if (item.quantity > 1) {
+      var oldPrice = item.price/item.quantity;
+      item.quantity--;
+      item.price = item.price - (oldPrice);
+    }
+  }
 }

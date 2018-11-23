@@ -13,8 +13,10 @@
   <div class="productBody">
     <ul>
       <li class="productItem" *ngFor="let product of prod; let i = index;">
-        <img src="/app/images/product/{{aisle1.image.substring(0,aisle1.image.indexOf('.'))}}/{{product.image}}">
-        <p>{{product?.name}}</p>
+        <div (click)="setProduct(product)">
+          <img src="/app/images/product/{{aisle1.image.substring(0,aisle1.image.indexOf('.'))}}/{{product.image}}">
+          <p>{{product?.name}}</p>
+        </div>
       </li>
     </ul>
   </div>

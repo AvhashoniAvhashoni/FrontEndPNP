@@ -1,5 +1,13 @@
 <app-header></app-header>
-<div class="itm">
+
+<div *ngIf="!itms?.length > 0" style="font-size:30px;text-align: center;">
+  <br/>
+  Opps! Something went wrong&#x263A;!
+  <br/>
+  <img src="/app/images/loading.gif">
+</div>
+
+<div class="itm" *ngIf="itms?.length > 0" >
   <div class="filterLft">
     <div class="filter">
       <label><b>FILTERED</b> BY CATEGORY</label>

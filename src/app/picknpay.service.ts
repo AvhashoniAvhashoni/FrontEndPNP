@@ -92,5 +92,11 @@ export class PicknpayService {
     return this._http.get(this._item+"/temp");
   }
 
+  setCartI(numI: number){
+    localStorage.setItem("numI", JSON.stringify(numI)); 
+  }
+  getCartI(){
+    return JSON.parse(localStorage.getItem("numI"));
+  }
   /*cart service*/
 }

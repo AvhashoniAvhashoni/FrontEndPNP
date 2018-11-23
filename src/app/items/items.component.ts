@@ -16,9 +16,10 @@ export class ItemsComponent implements OnInit {
   constructor(private _itemService: PicknpayService) { }
   
   ngOnInit() {
-    this.getItemsData();
-
+    //this.getItemsData();
     this.getCartItems();
+    this.getProduct();
+    this.getItemData();
   }
 
   getCartItems() {
@@ -50,15 +51,22 @@ export class ItemsComponent implements OnInit {
         break;
       }
     }
+
     if (j == 1) {
-      console.log(j);
     } else {
       if (j == 0) {
         this._itemService.addToTempCart(items).subscribe((itm) => {
         }, (error) => { });
-        console.log(j);
       }
     }
-    this.getCartItems();
+  }
+
+  getProduct(){
+    this.prd = this._itemService.getProduct();
+  }
+  
+  getItemData() {
+    this._itemService.getItemByFk(this.prd.id)
+      .subscribe((res) => this.itms = JSON.parse(res["_body"]));
   }
 }
