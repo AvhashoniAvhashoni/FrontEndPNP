@@ -28,7 +28,7 @@
       <div class="dropdown">
           <button routerLink="/app-aisle" class="dropbtn">SHOP BY AISLE</button>
           <div class="dropdown-content">
-              <a *ngFor="let aisleM of aisleMod" routerLink="/app-item">{{aisleM.name}}</a>
+              <a *ngFor="let aisleM of aisleMod" (click)="setAisle(aisleM)">{{aisleM.name}}</a>
           </div>
       </div>
       <div class="dropdown">
@@ -46,7 +46,7 @@
       <div class="dropdown">
           <button class="dropbtn">RECIPES</button>
           <div class="dropdown-content">
-              <a href="#">SUMMER SAVINGS</a>
+              <a href="#">SUMMER SAVINGS</a>  
               <a href="#">ITALIAN FESTIVAL</a>
               <a href="#">NEW FRESHRANGE</a>
               <a href="#">BRAAI</a>

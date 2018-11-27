@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { PicknpayService } from '../picknpay.service';
 import { ProductModModule } from '../product-mod/product-mod.module';
 import { AisleModModule } from '../aisle-mod/aisle-mod.module';
@@ -10,7 +10,12 @@ import { Router } from '@angular/router';
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
-export class ProductComponent implements OnInit {
+
+export class ProductComponent implements OnInit, DoCheck {
+  ngDoCheck(){
+    this.getAisle();
+  }
+  
   public prod: ProductModModule;
   public aisle1: AisleModModule;
   constructor(private _productService: PicknpayService, private router: Router) { }

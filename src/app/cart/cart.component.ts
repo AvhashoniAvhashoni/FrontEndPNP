@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { PicknpayService } from '../picknpay.service';
 import { ItemsModModule } from '../items-mod/items-mod.module';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -14,7 +15,7 @@ export class CartComponent implements OnInit {
   select = "select all";
   collaps = "collepse all";
 
-  constructor(private _cartService: PicknpayService) { }
+  constructor(private _cartService: PicknpayService, private router: Router) { }
 
   ngOnInit() {
     this.getfrmItms();
@@ -53,6 +54,14 @@ export class CartComponent implements OnInit {
       var oldPrice = item.price/item.quantity;
       item.quantity--;
       item.price = item.price - (oldPrice);
+    }
+  }
+
+  rmvItem(item: ItemsModModule) {
+    for (let i = 0; i < Object.keys(this.itms).length; i++) {
+      if (this.itms[i].id == item.id) {
+        this._cartService.removeItemfromCart(i).subscribe((res) => {this.getfrmItms(), this.router.navigate(['/app-cart'])});
+      }
     }
   }
 }

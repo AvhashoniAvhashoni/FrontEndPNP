@@ -99,4 +99,8 @@ export class PicknpayService {
     return JSON.parse(localStorage.getItem("numI"));
   }
   /*cart service*/
+  removeItemfromCart(indx: number) {
+    return this._http.delete(this._item+"/temp/"+indx);
+  }
+
 }
