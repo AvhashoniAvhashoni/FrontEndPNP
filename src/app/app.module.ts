@@ -21,6 +21,8 @@ import { AisleComponent } from './aisle/aisle.component';
 import { ProductComponent } from './product/product.component';
 import { ItemsComponent } from './items/items.component';
 import { CartComponent } from './cart/cart.component';
+import { CatalougeComponent } from './catalouge/catalouge.component';
+import { CompetitionComponent } from './competition/competition.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { CartComponent } from './cart/cart.component';
     AisleComponent,
     ProductComponent,
     ItemsComponent,
-    CartComponent
+    CartComponent,
+    CatalougeComponent,
+    CompetitionComponent
   ],
   imports: [
     BrowserModule,

@@ -19,6 +19,8 @@ import { ItemsComponent } from './items/items.component';
 import { CartComponent } from './cart/cart.component';
 
 import { from } from 'rxjs';
+import { CatalougeComponent } from './catalouge/catalouge.component';
+import { CompetitionComponent } from './competition/competition.component';
 
 const routes: Routes = [
   {path:'', pathMatch:'full', redirectTo:'app-home'},
@@ -39,6 +41,8 @@ const routes: Routes = [
   {path: 'app-product', component:ProductComponent },
   {path: 'app-items', component:ItemsComponent },
   {path: 'app-cart', component:CartComponent},
+  {path: 'app-catalougue', component:CatalougeComponent},
+  {path: 'app-competition', component:CompetitionComponent},
 ];
 
 @NgModule({
