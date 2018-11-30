@@ -95,8 +95,13 @@ export class PicknpayService {
   setCartI(numI: number){
     localStorage.setItem("numI", JSON.stringify(numI)); 
   }
+
   getCartI(){
     return JSON.parse(localStorage.getItem("numI"));
+  }
+
+  updateCart(item: ItemsModModule) {
+    return this._http.post(this._item+"/temp/update", item).pipe(map(this.exractData));
   }
   /*cart service*/
   removeItemfromCart(indx: number) {

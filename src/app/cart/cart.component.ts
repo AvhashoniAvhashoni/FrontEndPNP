@@ -47,6 +47,8 @@ export class CartComponent implements OnInit {
     var oldPrice = item.price/item.quantity;
     item.quantity++;
     item.price = item.price + (oldPrice);
+    this._cartService.updateCart(item).subscribe((itm) => {
+    }, (error) => { });
   }
 
   subqty(item: ItemsModModule) {
@@ -54,6 +56,8 @@ export class CartComponent implements OnInit {
       var oldPrice = item.price/item.quantity;
       item.quantity--;
       item.price = item.price - (oldPrice);
+      this._cartService.updateCart(item).subscribe((itm) => {
+      }, (error) => { });
     }
   }
 
@@ -63,5 +67,11 @@ export class CartComponent implements OnInit {
         this._cartService.removeItemfromCart(i).subscribe((res) => {this.getfrmItms(), this.router.navigate(['/app-cart'])});
       }
     }
+    this.getfrmItms();
+    this._cartService.setCartI(Object.keys(this.itms).length);
+  }
+
+  checkout() {
+    this.router.navigate(['/app-delivery'])
   }
 }

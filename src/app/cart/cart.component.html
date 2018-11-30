@@ -41,11 +41,11 @@
           <td valign="top">
             {{items.name}} {{items.weight}}</td>
           <td valign="top">
-            <button (click)="subqty(items)">
+            <button style="width: 35px; height: 35px; color: #fff; background-color: #ccc; border: none;" (click)="subqty(items)">
               -
             </button>
               {{items.quantity}}
-            <button (click)="addqty(items)">
+            <button style="width: 35px; height: 35px; color: #fff; background-color: #ccc; border: none;" (click)="addqty(items)">
               +
             </button>
           </td>
@@ -61,7 +61,7 @@
     <div *ngIf="!itms?.length > 0">
         <b>Look at this shiny new trolley</b>, just waiting to be filled. Start shopping now!
     </div>
-    <button *ngIf="itms?.length > 0" style="width: 100%;background-color: #52ae32; color: #fff;">Checkout</button>
+    <button style="width: 100%;background-color: #52ae32; color: #fff;" *ngIf="itms?.length > 0" (click)="checkout()">Checkout</button>
   </div>
 </div>
 <app-footer></app-footer>

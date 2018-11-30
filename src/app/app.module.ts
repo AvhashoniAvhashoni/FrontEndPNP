@@ -23,6 +23,7 @@ import { ItemsComponent } from './items/items.component';
 import { CartComponent } from './cart/cart.component';
 import { CatalougeComponent } from './catalouge/catalouge.component';
 import { CompetitionComponent } from './competition/competition.component';
+import { DeliveryComponent } from './delivery/delivery.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { CompetitionComponent } from './competition/competition.component';
     ItemsComponent,
     CartComponent,
     CatalougeComponent,
-    CompetitionComponent
+    CompetitionComponent,
+    DeliveryComponent
   ],
   imports: [
     BrowserModule,

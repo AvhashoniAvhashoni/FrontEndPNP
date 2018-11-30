@@ -11,17 +11,24 @@ export class ItemsComponent implements OnInit {
   public itms: ItemsModModule;
   public prd: ProductModModule;
   public itmz: ItemsModModule;
-   constructor(private _itemService: PicknpayService) { }
+
+  constructor(private _itemService: PicknpayService) { }
   
   ngOnInit() {
     this.getCartItems();
     this.getProduct();
     this.getItemData();
   }
-   getCartItems() {
+
+  setCartI() {
+    this._itemService.setCartI(Object.keys(this.itmz).length);
+  }
+
+  getCartItems() {
     this._itemService.getTempCart()
       .subscribe((res) => this.itmz = JSON.parse(res["_body"]));
   }
+
   addQty(item: ItemsModModule) {
     var oldPrice = item.price/item.quantity;
     item.quantity++;
@@ -36,13 +43,14 @@ export class ItemsComponent implements OnInit {
     }
   }
 
-   getItemsData() {
+  getItemsData() {
     this._itemService.getItems()
       .subscribe((resItemData) => this.itms = JSON.parse(resItemData["_body"]));
   }
-   addToTempCart(items: ItemsModModule) {
+
+  addToTempCart(items: ItemsModModule) {
     var j = 0;
-    
+
     for (let i = 0; i < Object.keys(this.itmz).length; i++) {
       if (this.itmz[i].id == items.id) {
         j = 1;
@@ -50,14 +58,20 @@ export class ItemsComponent implements OnInit {
       }
     }
      if (j == 1) {
+      this._itemService.updateCart(items).subscribe((itm) => {
+        }, (error) => { });
     } else {
       if (j == 0) {
         this._itemService.addToTempCart(items).subscribe((itm) => {
-        }, (error) => { });
+          }, (error) => { });
       }
     }
+    
+    this.getCartItems();
+    this.setCartI();
   }
-   getProduct(){
+
+  getProduct(){
     this.prd = this._itemService.getProduct();
   }
   

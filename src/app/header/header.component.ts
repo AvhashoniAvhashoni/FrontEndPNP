@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { PicknpayService } from '../picknpay.service';
 import { AisleModModule } from '../aisle-mod/aisle-mod.module';
 import { ItemsModModule } from '../items-mod/items-mod.module';
@@ -9,12 +9,16 @@ import { Router } from '@angular/router';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
-
+export class HeaderComponent implements OnInit, DoCheck {
   public aisleMod: AisleModModule;
   public itms: ItemsModModule;
-  
+  numItmz:number = 0;
+
   constructor(public _headerService: PicknpayService, private router: Router) { }
+
+  ngDoCheck() {
+    this.numItmz = this._headerService.getCartI();
+  }
 
   ngOnInit() {
     this.getAisleData();
