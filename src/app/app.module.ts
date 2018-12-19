@@ -2,9 +2,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { PicknpayService } from './picknpay.service';
+
 import { AppRoutingModule } from './app-routing.module';
+import { MaterialModule } from './material/material.module';
+
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
@@ -24,6 +28,7 @@ import { CartComponent } from './cart/cart.component';
 import { CatalougeComponent } from './catalouge/catalouge.component';
 import { CompetitionComponent } from './competition/competition.component';
 import { DeliveryComponent } from './delivery/delivery.component';
+import { TestingComponent } from './testing/testing.component';
 
 @NgModule({
   declarations: [
@@ -45,14 +50,17 @@ import { DeliveryComponent } from './delivery/delivery.component';
     CartComponent,
     CatalougeComponent,
     CompetitionComponent,
-    DeliveryComponent
+    DeliveryComponent,
+    TestingComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     ReactiveFormsModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MaterialModule
   ],
   providers: [PicknpayService],
   bootstrap: [AppComponent]

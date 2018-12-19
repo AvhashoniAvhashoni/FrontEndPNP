@@ -17,11 +17,10 @@ import { AisleComponent } from './aisle/aisle.component';
 import { ProductComponent } from './product/product.component';
 import { ItemsComponent } from './items/items.component';
 import { CartComponent } from './cart/cart.component';
-
-import { from } from 'rxjs';
 import { CatalougeComponent } from './catalouge/catalouge.component';
 import { CompetitionComponent } from './competition/competition.component';
 import { DeliveryComponent } from './delivery/delivery.component';
+import { TestingComponent } from './testing/testing.component';
 
 const routes: Routes = [
   {path:'', pathMatch:'full', redirectTo:'app-home'},
@@ -45,6 +44,7 @@ const routes: Routes = [
   {path: 'app-catalougue', component:CatalougeComponent},
   {path: 'app-competition', component:CompetitionComponent},
   {path: 'app-delivery', component:DeliveryComponent},
+  {path: 'app-testing', component:TestingComponent},
 ];
 
 @NgModule({
