@@ -1,11 +1,15 @@
 <header>
-  <div class="nav-top">
+  <div class="nav-top" >
       YOU ARE BROWSING:
-          <form>
+          <form *ngIf="cust?.name == null">
               <button><u><a routerLink="/app-login">LOG IN</a></u></button>
               |
               <button><u><a routerLink="/app-register">SIGN UP</a></u></button>
           </form>
+
+          <div class="cst" *ngIf="cust?.name != null">
+            Hello, {{cust.name}}! Your Account <mat-icon style="float: right;margin-top:-5px">expand_more</mat-icon>
+          </div>
   </div>
 
   <div class="nav-middle">
@@ -14,12 +18,18 @@
       </div>
       <div class="flt-right">
           <form>
-              <input type="search" name="search" placeholder="I'm looking for"><button class="gicon-btn"><span class="glyphicon glyphicon-search"></span></button>
-              <button type="submit" name="favourites" class="btn1">FAVOURITES</button>
-              <button type="submit" name="shopList" class="btn2">SHOPPING LIST</button>
-              <img src="/app/images/header/delivery-icon-nav.png">
-              <div class="qty">{{numItmz}}</div>
-              <img class="trolley" src="/app/images/header/trolley.png" routerLink="/app-cart">
+            <input type="search" name="search" placeholder="I'm looking for"><button class="gicon-btn"><span class="glyphicon glyphicon-search"></span></button>
+            <button mat-raised-button type="submit" name="favourites" class="btn1">
+                <mat-icon style="font-size:20px;">favorite_border</mat-icon> 
+                FAVOURITES
+            </button>
+            <button mat-raised-button type type="submit" name="shopList" class="btn2">
+                <mat-icon>list</mat-icon>
+                SHOPPING LIST
+            </button>
+            <img src="/app/images/header/delivery-icon-nav.png">
+            <div class="qty">{{numItmz}}</div>
+            <img class="trolley" src="/app/images/header/trolley.png" routerLink="/app-cart">
           </form>
       </div>
 

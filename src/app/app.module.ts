@@ -29,6 +29,8 @@ import { CatalougeComponent } from './catalouge/catalouge.component';
 import { CompetitionComponent } from './competition/competition.component';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { TestingComponent } from './testing/testing.component';
+import { OrderComponent } from './order/order.component';
+import { PaymentComponent } from './payment/payment.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { TestingComponent } from './testing/testing.component';
     CatalougeComponent,
     CompetitionComponent,
     DeliveryComponent,
-    TestingComponent
+    TestingComponent,
+    OrderComponent,
+    PaymentComponent
   ],
   imports: [
     BrowserModule,

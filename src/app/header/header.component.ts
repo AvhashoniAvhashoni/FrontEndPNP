@@ -3,6 +3,7 @@ import { PicknpayService } from '../picknpay.service';
 import { AisleModModule } from '../aisle-mod/aisle-mod.module';
 import { ItemsModModule } from '../items-mod/items-mod.module';
 import { Router } from '@angular/router';
+import { CustomerModule } from '../customer/customer.module';
 
 @Component({
   selector: 'app-header',
@@ -14,10 +15,12 @@ export class HeaderComponent implements OnInit, DoCheck {
   public itms: ItemsModModule;
   numItmz:number = 0;
 
+  public cust: CustomerModule;
   constructor(public _headerService: PicknpayService, private router: Router) { }
 
   ngDoCheck() {
     this.numItmz = this._headerService.getCartI();
+    this.cust = this._headerService.getUser();
   }
 
   ngOnInit() {

@@ -21,6 +21,8 @@ import { CatalougeComponent } from './catalouge/catalouge.component';
 import { CompetitionComponent } from './competition/competition.component';
 import { DeliveryComponent } from './delivery/delivery.component';
 import { TestingComponent } from './testing/testing.component';
+import { OrderComponent } from './order/order.component';
+import { PaymentComponent } from './payment/payment.component';
 
 const routes: Routes = [
   {path:'', pathMatch:'full', redirectTo:'app-home'},
@@ -45,6 +47,8 @@ const routes: Routes = [
   {path: 'app-competition', component:CompetitionComponent},
   {path: 'app-delivery', component:DeliveryComponent},
   {path: 'app-testing', component:TestingComponent},
+  {path: 'app-order', component:OrderComponent},
+  {path: 'app-payment', component:PaymentComponent},
 ];
 
 @NgModule({

@@ -27,6 +27,12 @@ header .nav-top form {
 	margin-right: 50px;
 }
 
+header .cst {
+	float: right;
+	margin-right: 50px;
+	text-transform: uppercase;
+}
+
 header .nav-top form button {
 	font-size: 12px;
 	background-color: transparent;
