@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PicknpayService } from '../picknpay.service';
 import { ItemsModModule } from '../items-mod/items-mod.module';
 import { Router } from '@angular/router';
+import { CustomerModule } from '../customer/customer.module';
 
 @Component({
   selector: 'app-cart',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 export class CartComponent implements OnInit {
   
   public itms: ItemsModModule;
+  public cust: CustomerModule;
 
   select = "select all";
   collaps = "collepse all";
@@ -19,6 +21,7 @@ export class CartComponent implements OnInit {
 
   ngOnInit() {
     this.getfrmItms();
+    this.regCust();
   }
 
   slct() {
@@ -73,5 +76,12 @@ export class CartComponent implements OnInit {
 
   checkout() {
     this.router.navigate(['/app-delivery'])
+  }
+
+  regCust() {
+    this.cust = this._cartService.getUser();
+    if (this.cust == null) {
+      this.router.navigate(['/app-login']);
+    }
   }
 }
