@@ -74,3 +74,28 @@
 .trolley .collect .slot {
     margin: 40px;
 }
+
+.delType {
+    margin-top: 20px;
+    width: 100%;
+    position: relative;
+}
+
+.delType1 {
+    display:inline-block;
+    margin-right: 10px;
+    background-color: #fcac00;
+}
+
+.delType1 img {
+    width: 270px;
+    height: 365px;
+}
+
+.tri {
+    width: 0;
+	height: 0;
+	border-left: 135px solid transparent;
+    border-right: 135px solid transparent;
+    background-color: #fff;
+}
