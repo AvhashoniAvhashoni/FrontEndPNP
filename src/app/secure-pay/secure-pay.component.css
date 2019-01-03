@@ -1,0 +1,81 @@
+header {
+    height: 65px;
+    line-height: 60px;
+    margin-bottom: 20px;
+    margin-top: 5px;
+    border-bottom: 3px solid #e6e6e6;
+}
+
+header img {
+    float: right;
+    margin-right: 80px;
+}
+
+.secPay {
+    margin-left: 60px;
+    margin-bottom: 50px;
+}
+
+.left {
+    border: 2px solid #d6d6d6;
+    border-radius: 10px;
+    width: 20%;
+    float: left;
+}
+
+.left .top {
+    text-align: center;
+    padding: 10px;
+    padding-bottom: 0;
+}
+
+.left .top p {
+    text-align: left;
+}
+
+.left .bot {
+    text-align: left;
+    background-color: #a6c307;
+    width: 100%;
+    color: #fff;
+    height: 40px;
+    padding: 10px;
+    font-weight: bold;
+    border-bottom-right-radius: 9px;
+    border-bottom-left-radius: 9px;
+}
+
+.left .bot span {
+    float: right;
+    font-size: 18px;
+}
+
+.right {
+    display: inline-block;
+    border: 2px solid #d6d6d6;
+    border-radius: 10px;
+    width: 70%;
+    margin-left: 30px;
+}
+
+button {
+    border-radius: 25px;
+}
+
+input {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+footer {
+    border-top: 3px solid #e6e6e6;
+    text-align: center;
+    padding-top: 20px;
+    color: gray;
+    line-height: 40px;
+    font-size: 12px;
+}
+
+footer img {
+    height: 40px;
+}

@@ -75,7 +75,7 @@ export class CartComponent implements OnInit {
   }
 
   checkout() {
-    this.router.navigate(['/app-delivery'])
+    this.router.navigate(['/app-order'])
   }
 
   regCust() {

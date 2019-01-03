@@ -39,3 +39,40 @@
     border-radius: 50px;
     border: 1px solid #ccc;
 }
+
+.ref {
+    color: #fff;
+    background-color: #575757;
+    font-size: 15px;
+    height: 50px;
+    padding-left: 10px;
+    padding-top: 15px;
+    width: 97%;
+}
+
+input {
+    border: none;
+    float: right;
+    margin-right: 10px;
+    height: 20px;
+    width: 330px;
+    color: #575757;
+}
+
+button {
+    margin-top: 20px;
+    float: right;
+    border: none;
+    background-color: #63b646;
+    font-size: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-right: 3%;
+    height: 38px;
+    width: 180px;
+}
+
+button:hover {
+    background-color: #52ae32;
+}

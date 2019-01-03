@@ -31,6 +31,7 @@ import { DeliveryComponent } from './delivery/delivery.component';
 import { TestingComponent } from './testing/testing.component';
 import { OrderComponent } from './order/order.component';
 import { PaymentComponent } from './payment/payment.component';
+import { SecurePayComponent } from './secure-pay/secure-pay.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { PaymentComponent } from './payment/payment.component';
     DeliveryComponent,
     TestingComponent,
     OrderComponent,
-    PaymentComponent
+    PaymentComponent,
+    SecurePayComponent
   ],
   imports: [
     BrowserModule,

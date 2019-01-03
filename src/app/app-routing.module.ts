@@ -23,6 +23,7 @@ import { DeliveryComponent } from './delivery/delivery.component';
 import { TestingComponent } from './testing/testing.component';
 import { OrderComponent } from './order/order.component';
 import { PaymentComponent } from './payment/payment.component';
+import { SecurePayComponent } from './secure-pay/secure-pay.component';
 
 const routes: Routes = [
   {path:'', pathMatch:'full', redirectTo:'app-home'},
@@ -49,6 +50,7 @@ const routes: Routes = [
   {path: 'app-testing', component:TestingComponent},
   {path: 'app-order', component:OrderComponent},
   {path: 'app-payment', component:PaymentComponent},
+  {path: 'app-secure-pay', component:SecurePayComponent},
 ];
 
 @NgModule({
