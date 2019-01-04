@@ -68,6 +68,10 @@ export class PicknpayService {
     return this._http.get(this._product+"/fk/"+fk);
   }
 
+  getProductData() {
+    return this._http.get(this._product);
+  }
+
   setProduct(prodMod: ProductModModule){
     localStorage.setItem("prod", JSON.stringify(prodMod)); 
   }
@@ -82,6 +86,10 @@ export class PicknpayService {
 
   getItems() {
     return this._http.get(this._item);
+  }
+
+  postItem(item: ItemsModModule) {
+    return this._http.post(this._item, item);
   }
 
   addToTempCart(item: ItemsModModule) {

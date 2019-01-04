@@ -20,7 +20,7 @@ export class ItemsComponent implements OnInit {
   ngOnInit() {
     this.getCartItems();
     this.getProduct();
-    this.getItemsData();
+    this.getAItemData();
   }
 
   setCartI() {

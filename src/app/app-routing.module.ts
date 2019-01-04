@@ -24,6 +24,8 @@ import { TestingComponent } from './testing/testing.component';
 import { OrderComponent } from './order/order.component';
 import { PaymentComponent } from './payment/payment.component';
 import { SecurePayComponent } from './secure-pay/secure-pay.component';
+import { AddItemComponent } from './add-item/add-item.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
 
 const routes: Routes = [
   {path:'', pathMatch:'full', redirectTo:'app-home'},
@@ -51,6 +53,9 @@ const routes: Routes = [
   {path: 'app-order', component:OrderComponent},
   {path: 'app-payment', component:PaymentComponent},
   {path: 'app-secure-pay', component:SecurePayComponent},
+  {path: 'app-add-item', component:AddItemComponent},
+  {path: 'app-admin-home', component:AdminHomeComponent},
+  
 ];
 
 @NgModule({

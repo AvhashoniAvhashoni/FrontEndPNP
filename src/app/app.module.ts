@@ -32,6 +32,8 @@ import { TestingComponent } from './testing/testing.component';
 import { OrderComponent } from './order/order.component';
 import { PaymentComponent } from './payment/payment.component';
 import { SecurePayComponent } from './secure-pay/secure-pay.component';
+import { AddItemComponent } from './add-item/add-item.component';
+import { AdminHomeComponent } from './admin-home/admin-home.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +59,9 @@ import { SecurePayComponent } from './secure-pay/secure-pay.component';
     TestingComponent,
     OrderComponent,
     PaymentComponent,
-    SecurePayComponent
+    SecurePayComponent,
+    AddItemComponent,
+    AdminHomeComponent
   ],
   imports: [
     BrowserModule,

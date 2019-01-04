@@ -56,6 +56,68 @@ header img {
     border-radius: 10px;
     width: 70%;
     margin-left: 30px;
+    height: 450px;
+    background-color: #fafafa;
+}
+
+.right .top {
+    background-color: #e6e6e6;
+    border-top-right-radius: 9px;
+    border-top-left-radius: 9px;
+    height: 50px;
+    padding: 15px;
+}
+
+.right .top .top-right {
+    width: 200px;
+    border-right: solid 1px #ddd;
+    float: left;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+.right .top img {
+    padding-left: 15px;
+    height: 30px;
+    margin-top: -5px;
+}
+
+.right .top .top-right:hover {
+    border-right: 1px solid #d6d6d6;
+}
+
+.right .bot {
+    padding-left: 30px;
+    padding-top: 15px;
+}
+
+.right .bot table {
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+.right .bot table tr .td1 {
+    width: 180px;
+     text-align: right
+}
+
+.right .bot table tr .td2 {
+    padding-left: 30px;
+}
+
+.right .bot table tr .td2 input {
+    border-radius: 10px;
+    height: 35px;
+    width: 250px;
+    margin-right: 20px;
+}
+
+.right .bot table tr {
+    height: 50px;
+}
+
+.right .bot .conf {
+    margin-left: 210px;
 }
 
 button {
@@ -64,7 +126,6 @@ button {
 
 input {
     border: 1px solid #ccc;
-    border-radius: 10px;
 }
 
 footer {

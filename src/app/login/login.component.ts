@@ -34,9 +34,8 @@ export class LoginComponent implements OnInit {
     this._pnpService.getCustomerLogin(email, password)
       .subscribe((resCustomerData) => 
       {this.cust = resCustomerData
-        this._pnpService.setUser(this.cust)
+        this._pnpService.setUser(this.cust),
+        this.router.navigate(['/app-home'])
     });
-      
-    this.router.navigate(['/app-home']);
   }
 }
