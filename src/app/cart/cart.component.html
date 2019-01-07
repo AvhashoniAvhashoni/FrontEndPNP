@@ -36,7 +36,7 @@
       <tr class="tritems" *ngFor="let items of itms">
           <td valign="top">
             <mat-checkbox color="warn"></mat-checkbox>
-            <img src="/app/images/items/product1/{{items.image}}" style="height: 130px;">
+            <img src="/app/images/items/product{{items.pid}}/{{items.image}}" style="height: 130px;">
           </td>
           <td valign="top">
             {{items.name}} {{items.weight}}</td>

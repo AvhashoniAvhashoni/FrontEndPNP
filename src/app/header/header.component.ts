@@ -42,4 +42,9 @@ export class HeaderComponent implements OnInit, DoCheck {
     this._headerService.setAaisle(aisle1);
     this.router.navigate(['/app-product']);
   }
+
+  signOut() {
+    this._headerService.endUser();
+    this.router.navigate(['/app-home']);
+  }
 }

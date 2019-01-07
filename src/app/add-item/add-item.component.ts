@@ -3,6 +3,7 @@ import { PicknpayService } from '../picknpay.service';
 import { ItemsModModule } from '../items-mod/items-mod.module';
 import { ProductModModule } from '../product-mod/product-mod.module';
 import { FormGroup, FormControl } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-add-item',
@@ -16,7 +17,7 @@ export class AddItemComponent implements OnInit {
   prds = 0;
   numItms = 0;
 
-  constructor(private _itemAddService: PicknpayService) { }
+  constructor(private _itemAddService: PicknpayService, private router: Router) { }
 
   ngOnInit() {
     this.getProducts();
@@ -63,7 +64,8 @@ export class AddItemComponent implements OnInit {
     }
     
     this._itemAddService.postItem(itm).subscribe((itmz) => {
-      itm = ItemsModModule;
-    }, (error) => { });
+      this._itemAddService.setItemAdded(itm.name), itm = ItemsModModule, 
+      this.router.navigate(['/app-admin-home'])
+      }, (error) => { });
   }
 }

@@ -14,6 +14,7 @@ export class ItemsComponent implements OnInit {
   public prd: ProductModModule;
   public itmz: ItemsModModule;
   public cust: CustomerModule;
+  totCost = 0;
 
   constructor(private _itemService: PicknpayService, private router: Router) { }
   
@@ -23,8 +24,8 @@ export class ItemsComponent implements OnInit {
     this.getAItemData();
   }
 
-  setCartI() {
-    this._itemService.setCartI(Object.keys(this.itmz).length);
+  setCartI(num: number) {
+    this._itemService.setCartI(Object.keys(this.itmz).length + num);
   }
 
   getCartItems() {
@@ -66,16 +67,26 @@ export class ItemsComponent implements OnInit {
       }
       if (j == 1) {
         this._itemService.updateCart(items).subscribe((itm) => {
+          this.totCost = 0;
+          this.setCartI(0);
+          for (let i = 0; i < Object.keys(this.itmz).length; i++) {
+            this.totCost = this.totCost + this.itmz[i].price;
+          }
+          this._itemService.setTotalCost(this.totCost);
           }, (error) => { });
       } else {
         if (j == 0) {
           this._itemService.addToTempCart(items).subscribe((itm) => {
+            this.totCost = 0;
+            for (let i = 0; i < Object.keys(this.itmz).length; i++){
+              this.totCost = this.totCost + this.itmz[i].price;
+            }
+            this._itemService.setTotalCost(this.totCost + items.price);
+            this.setCartI(1);
             }, (error) => { });
         }
       }
-      
       this.getCartItems();
-      this.setCartI();
     }
   }
 

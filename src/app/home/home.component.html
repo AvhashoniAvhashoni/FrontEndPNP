@@ -61,7 +61,22 @@
   </div>
   <div class="main-section">
     <div class="main-sectionTitle">
-      <h1>ONLINE ONLY! FLASH SALE ON BABY <span>– 2 DAYS ONLY</span></h1>
+      <!--<h1>ONLINE ONLY! FLASH SALE ON BABY <span>– 2 DAYS ONLY</span></h1>-->
+
+      <div class="aisle">
+        <h1><b>WHAT DO YOU NEED</b> TO STOCK UP ON?</h1>
+        <div class="aisleBody">
+          <ul>
+            <li class="aisleItem" *ngFor="let aisleData of aisleMod;">
+              <div (click)="setAisle(aisleData)">
+                <img src="/app/images/aisle/{{aisleData.image}}">
+                <p>{{aisleData.name}}</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      
     </div>
   </div>
 </div>

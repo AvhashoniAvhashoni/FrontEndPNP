@@ -116,4 +116,25 @@ export class PicknpayService {
     return this._http.delete(this._item+"/temp/"+indx);
   }
 
+  /*Item add*/
+  setItemAdded(str: string){
+    localStorage.setItem("addItem", "Item " + str + " has been added"); 
+  }
+
+  getItemAdded(){
+    return localStorage.getItem("addItem");
+  }
+
+  removegetItemAdded() {
+    localStorage.removeItem("addItem");
+  }
+
+  /*order*/
+  setTotalCost(totCost: Number) {
+    localStorage.setItem("totalCost", JSON.stringify(totCost));
+  }
+
+  getTotalCost() {
+    return localStorage.getItem("totalCost");
+  }
 }

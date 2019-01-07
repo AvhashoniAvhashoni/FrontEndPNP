@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, DoCheck } from '@angular/core';
 import { PicknpayService } from '../picknpay.service';
 import { CustomerModule } from '../customer/customer.module';
+import { AisleModModule } from '../aisle-mod/aisle-mod.module';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -8,17 +10,31 @@ import { CustomerModule } from '../customer/customer.module';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-
-  public cust: CustomerModule;
-  constructor(private _pnpService: PicknpayService) { }
-
-  ngOnInit() {
+export class HomeComponent implements OnInit, DoCheck {
+  ngDoCheck() {
     this.getUsers();
   }
 
-  getUsers(){
+  public cust: CustomerModule;
+  public aisleMod: AisleModModule;
+  constructor(private _pnpService: PicknpayService, private router: Router) { }
+
+  ngOnInit() {
+    this.getUsers();
+    this.getAisleData();
+  }
+
+  getUsers() {
     this.cust = this._pnpService.getUser();
   }
 
+  getAisleData(){
+    this._pnpService.getAisle()
+      .subscribe((resAisleData) => this.aisleMod  = JSON.parse(resAisleData["_body"]));
+  }
+
+  setAisle(aisle1: AisleModModule){
+    this._pnpService.setAaisle(aisle1);
+    this.router.navigate(['/app-product']);
+  }
 }

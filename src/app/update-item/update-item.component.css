@@ -1,0 +1,14 @@
+button {
+    float: right;
+    margin-top: 10px;
+    margin-right: 50px; 
+}
+
+
+.update {
+    padding: 50px;
+}
+
+mat-search-bar {
+    margin-left: 270px;
+}

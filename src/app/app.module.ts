@@ -4,6 +4,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { NgMatSearchBarModule } from 'ng-mat-search-bar';
+
 import { PicknpayService } from './picknpay.service';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -34,6 +36,8 @@ import { PaymentComponent } from './payment/payment.component';
 import { SecurePayComponent } from './secure-pay/secure-pay.component';
 import { AddItemComponent } from './add-item/add-item.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { UpdateItemComponent } from './update-item/update-item.component';
+import { DeleteItemComponent } from './delete-item/delete-item.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +65,9 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
     PaymentComponent,
     SecurePayComponent,
     AddItemComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    UpdateItemComponent,
+    DeleteItemComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +76,8 @@ import { AdminHomeComponent } from './admin-home/admin-home.component';
     ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    NgMatSearchBarModule
   ],
   providers: [PicknpayService],
   bootstrap: [AppComponent]

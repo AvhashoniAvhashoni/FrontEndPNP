@@ -13,6 +13,7 @@ export class CartComponent implements OnInit {
   
   public itms: ItemsModModule;
   public cust: CustomerModule;
+  totCost = 0;
 
   select = "select all";
   collaps = "collepse all";
@@ -51,6 +52,11 @@ export class CartComponent implements OnInit {
     item.quantity++;
     item.price = item.price + (oldPrice);
     this._cartService.updateCart(item).subscribe((itm) => {
+      this.totCost = 0;
+      for (let i = 0; i < Object.keys(this.itms).length; i++){
+        this.totCost = this.totCost + this.itms[i].price;
+      }
+      this._cartService.setTotalCost(this.totCost);
     }, (error) => { });
   }
 
@@ -60,6 +66,11 @@ export class CartComponent implements OnInit {
       item.quantity--;
       item.price = item.price - (oldPrice);
       this._cartService.updateCart(item).subscribe((itm) => {
+        this.totCost = 0;
+        for (let i = 0; i < Object.keys(this.itms).length; i++){
+          this.totCost = this.totCost + this.itms[i].price;
+        }
+        this._cartService.setTotalCost(this.totCost);
       }, (error) => { });
     }
   }
@@ -67,11 +78,16 @@ export class CartComponent implements OnInit {
   rmvItem(item: ItemsModModule) {
     for (let i = 0; i < Object.keys(this.itms).length; i++) {
       if (this.itms[i].id == item.id) {
-        this._cartService.removeItemfromCart(i).subscribe((res) => {this.getfrmItms(), this.router.navigate(['/app-cart'])});
+        this._cartService.removeItemfromCart(i).subscribe((res) => {this.getfrmItms(), 
+          this.totCost = 0;
+          for (let i = 0; i < Object.keys(this.itms).length; i++){
+            this.totCost = this.totCost + this.itms[i].price;
+          }
+          this._cartService.setTotalCost(this.totCost - item.price);
+          this.router.navigate(['/app-cart'])});
       }
     }
-    this.getfrmItms();
-    this._cartService.setCartI(Object.keys(this.itms).length);
+    this._cartService.setCartI(Object.keys(this.itms).length - 1);
   }
 
   checkout() {

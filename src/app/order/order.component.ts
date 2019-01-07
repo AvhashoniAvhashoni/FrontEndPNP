@@ -2,6 +2,7 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 import { Router } from '@angular/router';
 import { PicknpayService } from '../picknpay.service';
 import { ItemsModModule } from '../items-mod/items-mod.module';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-order',
@@ -11,26 +12,30 @@ import { ItemsModModule } from '../items-mod/items-mod.module';
 export class OrderComponent implements OnInit{
  
   public itms: ItemsModModule;
-  cost = 0;
+  cost = "";
+  err = "";
 
   constructor(private _ordService: PicknpayService, private router: Router) { }
 
   ngOnInit() {
     this.getfrmItms();
+    this.cost = this._ordService.getTotalCost();
   }
 
   getfrmItms() {
     this._ordService.getTempCart().subscribe((res) => this.itms = JSON.parse(res["_body"]));
   }
 
-  totItms() {
-    for (var i = 0; i < Object.keys(this.itms).length; i++){
-      this.cost = this.cost + this.itms.price;
-    }
-  }
+  purchaseNum = new FormGroup({
+    num: new FormControl(''),
+  })
 
   checkout() {
-    this.router.navigate(["/app-payment"]);
+    if (this.purchaseNum.controls['num'].value != "") {
+      this.router.navigate(["/app-payment"]);
+      console.log(this.purchaseNum.controls['num'].value)
+    } else {
+      this.err = "Invalid number! Try again!";
+    }
   }
-
 }

@@ -58,7 +58,7 @@
 
     <div class="item" *ngFor="let items of itms; let i of index" >
       
-        <img src="/app/images/items/product1/{{items.image}}">
+        <img src="/app/images/items/product{{prd.id}}/{{items.image}}">
         <p>{{items.name}} {{items.weight}}</p>
         
         <p class="normalPrice">
