@@ -122,6 +122,12 @@ header img {
 
 button {
     border-radius: 25px;
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 100px;
+    height: 30px;
+    margin-bottom: 10px;
+    border: none;
 }
 
 input {

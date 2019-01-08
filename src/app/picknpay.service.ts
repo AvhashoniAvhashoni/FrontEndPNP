@@ -8,6 +8,8 @@ import { ProductModModule } from './product-mod/product-mod.module';
 import { ItemsModModule } from './items-mod/items-mod.module';
 
 import { from } from 'rxjs';
+import { PaymentModModule } from './payment-mod/payment-mod.module';
+import { CartModModule } from './cart-mod/cart-mod.module';
 
 @Injectable({
   providedIn: 'root'
@@ -18,7 +20,9 @@ export class PicknpayService {
   private _aisle: string = "http://localhost:8080/aisle/";
   private _product: string = "http://localhost:8080/product/";
   private _item: string = "http://localhost:8080/item/";
-
+  private _payment: string = "http://localhost:8080/payment/";
+  private _cart: string = "http://localhost:8080/cart/";
+  
   constructor(private _http: Http) { }
 
   setUser(customer: CustomerModule){
@@ -136,5 +140,23 @@ export class PicknpayService {
 
   getTotalCost() {
     return localStorage.getItem("totalCost");
+  }
+
+  /*Payment*/
+  getPayments() {
+    return this._http.get(this._payment);
+  }
+
+  setPayment(payment: PaymentModModule) {
+    return this._http.post(this._payment, payment);
+  }
+
+  deletePayment(id){
+    return this._http.delete(this._payment+"/"+id);
+  }
+
+  /*cart*/
+  saveCart(cart: CartModModule) {
+    return this._http.post(this._cart, cart);
   }
 }

@@ -30,39 +30,41 @@
     </div>
     <div class="bot">
         We accept major cards including VISA and MasterCard. The accepted card options are provided above.
+        <form [formGroup]="payment" (submit)="savePayment()"> 
+          <table>
+            <tr>
+              <td class="td1">Card number</td>
+              <td class="td2"><input type="number" id="cardnum" name="cardnum" required formControlName="cardnum"></td>
+            </tr>
+            <tr>
+              <td class="td1">Card holder name</td>
+              <td class="td2"><input type="text" id="name" name="name" required formControlName="name"></td>
+            </tr>
+            <tr>
+              <td class="td1">Expiry date</td>
+              <td class="td2">
+                  <input type="month" id="exdate" name="exdate" required formControlName="exdate"> 
+              </td>
+            </tr>
+            <tr>
+              <td class="td1">CVV number</td>
+              <td class="td2"><input type="number" id="cvv" name="cvv" required formControlName="cvv"></td>
+            </tr>
+          </table>
 
-        <table>
-          <tr>
-            <td class="td1">Card number</td>
-            <td class="td2"><input type="text"></td>
-          </tr>
-          <tr>
-            <td class="td1">Card holder name</td>
-            <td class="td2"><input type="text"></td>
-          </tr>
-          <tr>
-            <td class="td1">Expiry date</td>
-            <td class="td2">
-                <input type="month"> 
-            </td>
-          </tr>
-          <tr>
-            <td class="td1">CVV number</td>
-            <td class="td2"><input type="number"></td>
-          </tr>
-        </table>
-
-        <div class="conf">
-          PayU User Agreement and Privacy Policy.
-          <br/>
-          
-          <button>Continue</button> <button>Cancel</button>
-          
-          <br/>
-          *You may be redirected to your bank's secure site to 
-          <br/>
-          authenticate yourself before making payment.
-        </div>
+          <div class="conf">
+            PayU <span style="color: #a6c307;">User Agreement</span> and <span style="color: #a6c307;">Privacy Policy</span>.
+            <br/>
+            
+            <button style="color:#fff; background-color:#a6c307;">Continue</button>
+            
+            <br/>
+            <span style="font-size: 10px;">*You may be redirected to your bank's secure site to 
+            <br/>
+            authenticate yourself before making payment.</span>
+          </div>
+        </form>
+        <button style="background-color: #fff; border:solid 1px #a6c307; float: right; margin-top: -78px; margin-right: 370px;">Cancel</button>
     </div>
   </div>
 </div>

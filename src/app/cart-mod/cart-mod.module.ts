@@ -10,8 +10,9 @@ import { CommonModule, Time } from '@angular/common';
 export class CartModModule { 
   id: number;
   quantity: number;
-  date: Date;
-  time: Time;
+  date: string;
+  time: string;
   cid: number;
   iid: number;
+  pid: number;
 }
