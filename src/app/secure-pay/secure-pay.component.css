@@ -126,6 +126,7 @@ button {
 
 input {
     border: 1px solid #ccc;
+    padding-left: 10px;
 }
 
 footer {
