@@ -44,7 +44,7 @@ export class CartComponent implements OnInit {
   }
 
   getfrmItms() {
-    this._cartService.getTempCart().subscribe((res) => this.itms = JSON.parse(res["_body"]));;
+    this._cartService.getTempCart().subscribe((res) => this.itms = JSON.parse(res["_body"]));
   }
 
   addqty(item: ItemsModModule) {

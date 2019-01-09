@@ -1,0 +1,51 @@
+.recipt {
+    margin-left: 30%;
+    margin-right: 30%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: solid 1px #505050;
+    padding: 20px;
+    font-size: 16px;
+}
+
+.recipt .heading {
+    text-align: center;
+    font-size: 25px;
+    text-transform: capitalize;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.recipt .details {
+    font-size: 20px;
+    padding-right: 20px;
+    margin-bottom: 15px;
+}
+
+.recipt .details span {
+    float: right;
+}
+
+.recipt table {
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.recipt table tr {
+    height: 23px;
+    text-transform: capitalize;
+}
+
+.recipt .total {
+    margin-left: 30%;
+    margin-bottom: 20px;
+}
+
+.recipt .total span {
+    padding-left: 20%;
+    font-weight: bold;
+}
+
+.recipt .foot {
+    text-align: center;
+}

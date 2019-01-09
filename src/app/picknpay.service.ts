@@ -30,6 +30,11 @@ export class PicknpayService {
   }
 
   getUser(){
+    this.removeRef();
+    this.removegetItemAdded();
+    this.removeAisle();
+    this.removeProduct();
+    this.removeCartI();   
     return JSON.parse(sessionStorage.getItem("user"));
   }
   
@@ -63,8 +68,13 @@ export class PicknpayService {
   setAaisle(aisleMod: AisleModModule){
     localStorage.setItem("aisle", JSON.stringify(aisleMod)); 
   }
+
   getAaisle(){
     return JSON.parse(localStorage.getItem("aisle"));
+  }
+
+  removeAisle() {
+    localStorage.removeItem("aisle");
   }
 
   /*Product Service*/
@@ -81,6 +91,9 @@ export class PicknpayService {
   }
   getProduct(){
     return JSON.parse(localStorage.getItem("prod"));
+  }
+  removeProduct() {
+    localStorage.removeItem("prod");
   }
 
   /*items service*/
@@ -110,6 +123,10 @@ export class PicknpayService {
 
   getCartI(){
     return JSON.parse(localStorage.getItem("numI"));
+  }
+
+  removeCartI() {
+    localStorage.removeItem("numI");
   }
 
   updateCart(item: ItemsModModule) {
@@ -158,5 +175,18 @@ export class PicknpayService {
   /*cart*/
   saveCart(cart: CartModModule) {
     return this._http.post(this._cart, cart);
+  }
+
+  /*reference number*/
+  setRef(num: number) {
+    sessionStorage.setItem("refNum", JSON.stringify(num));
+  } 
+
+  getRef() {
+    return sessionStorage.getItem("refNum");
+  }
+
+  removeRef() {
+    sessionStorage.removeItem("refNum");
   }
 }

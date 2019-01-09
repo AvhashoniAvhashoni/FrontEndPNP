@@ -33,7 +33,8 @@ export class OrderComponent implements OnInit{
   checkout() {
     if (this.purchaseNum.controls['num'].value != "") {
       this.router.navigate(["/app-payment"]);
-      console.log(this.purchaseNum.controls['num'].value)
+      this._ordService.setRef(this.purchaseNum.controls['num'].value);
+
     } else {
       this.err = "Invalid number! Try again!";
     }

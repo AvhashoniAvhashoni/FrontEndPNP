@@ -11,8 +11,8 @@ export class CartModModule {
   id: number;
   quantity: number;
   date: string;
-  time: string;
   cid: number;
   iid: number;
   pid: number;
+  ordernum: number;
 }

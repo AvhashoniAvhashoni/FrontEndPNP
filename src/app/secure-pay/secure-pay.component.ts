@@ -4,6 +4,8 @@ import { PaymentModModule } from '../payment-mod/payment-mod.module';
 import { PicknpayService } from '../picknpay.service';
 import { Router } from '@angular/router';
 import { CartModModule } from '../cart-mod/cart-mod.module';
+import { CustomerModule } from '../customer/customer.module';
+import { ItemsModModule } from '../items-mod/items-mod.module';
 
 @Component({
   selector: 'app-secure-pay',
@@ -14,9 +16,22 @@ export class SecurePayComponent implements OnInit {
 
   public securePay: PaymentModModule;
   public cart: CartModModule;
+  public customer: CustomerModule;
+  public items: ItemsModModule;
+
   constructor(private _paymentService: PicknpayService, private router: Router) { }
 
   ngOnInit() {
+    this._paymentService.getTempCart()
+      .subscribe((res) => this.items  = JSON.parse(res["_body"]));
+    this.customer = this._paymentService.getUser();
+
+    this._paymentService.getPayments()
+          .subscribe((res) => this.cart  = JSON.parse(res["_body"]));
+    
+    if (this.customer  == null || this._paymentService.getCartI() == null) {
+      this.router.navigate(['/app-not-found']);
+    }
   }
 
   payment = new FormGroup ({
@@ -27,14 +42,47 @@ export class SecurePayComponent implements OnInit {
     name: new FormControl(''),
   })
 
+
+  tempCart: any;
+
   savePayment() {
-    let securePay = this.payment.value;
-    if (securePay.cvv != "" || securePay.cardnum != "" || securePay.exdate != "" || securePay.name != ""){
-      console.log(securePay);
-      
+    let securePay = this.payment.value;    
+
+    securePay.id = Object.keys(this.cart).length + 1;
+
+    if (securePay.cvv != "" || securePay.cardnum != "" || securePay.exdate != "" || securePay.name != "")  {
+      this.storeCart(securePay.id);
       this._paymentService.setPayment(securePay).subscribe((secPay) => {
-        securePay = PaymentModModule;
+        securePay = PaymentModModule,
+        this.killAllSessions();
       }, (error) => { });
     }
+  }
+
+  storeCart(paymentId: number) {
+    var ordNum = this._paymentService.getRef();
+
+    if (Object.keys(this.items).length > 0) {
+      for (let i = 0; i < Object.keys(this.items).length; i++) {
+        this.tempCart = {date: Date(), 
+                          quantity: this.items[i].quantity,
+                          pid: paymentId, 
+                          cid: this.customer.id,
+                          iid: this.items[i].id,
+                          ordernum: ordNum};
+        this._paymentService.saveCart(this.tempCart).subscribe((cart) => {
+        }, (error) => { });
+      }
+    }
+  }
+
+  killAllSessions() {
+    this._paymentService.removeRef();
+    this._paymentService.endUser();
+    this._paymentService.removegetItemAdded();
+    this._paymentService.removeAisle();
+    this._paymentService.removeProduct();
+    this._paymentService.removeCartI();    
+    this.router.navigate(['/app-home']);
   }
 }

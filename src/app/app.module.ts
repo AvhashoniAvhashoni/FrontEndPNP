@@ -38,6 +38,8 @@ import { AddItemComponent } from './add-item/add-item.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
 import { UpdateItemComponent } from './update-item/update-item.component';
 import { DeleteItemComponent } from './delete-item/delete-item.component';
+import { NotFoundComponent } from './not-found/not-found.component';
+import { ReciptComponent } from './recipt/recipt.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +69,9 @@ import { DeleteItemComponent } from './delete-item/delete-item.component';
     AddItemComponent,
     AdminHomeComponent,
     UpdateItemComponent,
-    DeleteItemComponent
+    DeleteItemComponent,
+    NotFoundComponent,
+    ReciptComponent
   ],
   imports: [
     BrowserModule,

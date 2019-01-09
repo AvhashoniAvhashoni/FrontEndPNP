@@ -20,6 +20,10 @@ export class HeaderComponent implements OnInit, DoCheck {
 
   ngDoCheck() {
     this.numItmz = this._headerService.getCartI();
+    if (this.numItmz == null) {
+      this.numItmz = 0;
+    } 
+    
     this.cust = this._headerService.getUser();
   }
 
