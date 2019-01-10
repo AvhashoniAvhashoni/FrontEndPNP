@@ -22,23 +22,26 @@ export class PicknpayService {
   private _item: string = "http://localhost:8080/item/";
   private _payment: string = "http://localhost:8080/payment/";
   private _cart: string = "http://localhost:8080/cart/";
-  
+
   constructor(private _http: Http) { }
 
-  setUser(customer: CustomerModule){
-    sessionStorage.setItem("user", JSON.stringify(customer)); 
+  setUser(customer: CustomerModule) {
+    sessionStorage.setItem("user", JSON.stringify(customer));
   }
 
-  getUser(){
+  getUser() {
+    return JSON.parse(sessionStorage.getItem("user"));
+  }
+
+  endUser() {
     this.removeRef();
     this.removegetItemAdded();
     this.removeAisle();
     this.removeProduct();
-    this.removeCartI();   
-    return JSON.parse(sessionStorage.getItem("user"));
-  }
-  
-  endUser(){
+    this.removeCartI();
+    this.removeTotalCost();
+    this.removeTotItems();
+    this.removeTempCart();
     sessionStorage.removeItem("user");
   }
 
@@ -51,12 +54,12 @@ export class PicknpayService {
     return this._http.get(this._url + "/login/" + email + "/" + password).pipe(map(this.exractData));
   }
 
-  private exractData(res: Response){
+  private exractData(res: Response) {
     let body = res.json();
     return body;
   }
- 
-  postCustomer(customers: CustomerModule){
+
+  postCustomer(customers: CustomerModule) {
     return this._http.post(this._url, customers);
   }
 
@@ -65,11 +68,11 @@ export class PicknpayService {
     return this._http.get(this._aisle);
   }
 
-  setAaisle(aisleMod: AisleModModule){
-    localStorage.setItem("aisle", JSON.stringify(aisleMod)); 
+  setAaisle(aisleMod: AisleModModule) {
+    localStorage.setItem("aisle", JSON.stringify(aisleMod));
   }
 
-  getAaisle(){
+  getAaisle() {
     return JSON.parse(localStorage.getItem("aisle"));
   }
 
@@ -79,17 +82,17 @@ export class PicknpayService {
 
   /*Product Service*/
   getProductByFk(fk: number) {
-    return this._http.get(this._product+"/fk/"+fk);
+    return this._http.get(this._product + "/fk/" + fk);
   }
 
   getProductData() {
     return this._http.get(this._product);
   }
 
-  setProduct(prodMod: ProductModModule){
-    localStorage.setItem("prod", JSON.stringify(prodMod)); 
+  setProduct(prodMod: ProductModModule) {
+    localStorage.setItem("prod", JSON.stringify(prodMod));
   }
-  getProduct(){
+  getProduct() {
     return JSON.parse(localStorage.getItem("prod"));
   }
   removeProduct() {
@@ -98,7 +101,7 @@ export class PicknpayService {
 
   /*items service*/
   getItemByFk(fk: number) {
-    return this._http.get(this._item+"/fk/"+fk);
+    return this._http.get(this._item + "/fk/" + fk);
   }
 
   getItems() {
@@ -110,18 +113,18 @@ export class PicknpayService {
   }
 
   addToTempCart(item: ItemsModModule) {
-    return this._http.post(this._item+"/temp", item).pipe(map(this.exractData));
+    return this._http.post(this._item + "/temp", item).pipe(map(this.exractData));
   }
 
   getTempCart() {
-    return this._http.get(this._item+"/temp");
+    return this._http.get(this._item + "/temp");
   }
 
-  setCartI(numI: number){
-    localStorage.setItem("numI", JSON.stringify(numI)); 
+  setCartI(numI: number) {
+    localStorage.setItem("numI", JSON.stringify(numI));
   }
 
-  getCartI(){
+  getCartI() {
     return JSON.parse(localStorage.getItem("numI"));
   }
 
@@ -130,19 +133,24 @@ export class PicknpayService {
   }
 
   updateCart(item: ItemsModModule) {
-    return this._http.post(this._item+"/temp/update", item).pipe(map(this.exractData));
+    return this._http.post(this._item + "/temp/update", item).pipe(map(this.exractData));
   }
   /*cart service*/
   removeItemfromCart(indx: number) {
-    return this._http.delete(this._item+"/temp/"+indx);
+    return this._http.delete(this._item + "/temp/" + indx);
+  }
+
+  removeTempCart() {
+    return this._http.delete(this._item);
+
   }
 
   /*Item add*/
-  setItemAdded(str: string){
-    localStorage.setItem("addItem", "Item " + str + " has been added"); 
+  setItemAdded(str: string) {
+    localStorage.setItem("addItem", "Item " + str + " has been added");
   }
 
-  getItemAdded(){
+  getItemAdded() {
     return localStorage.getItem("addItem");
   }
 
@@ -159,6 +167,10 @@ export class PicknpayService {
     return localStorage.getItem("totalCost");
   }
 
+  removeTotalCost() {
+    localStorage.removeItem("totalCost");
+  }
+
   /*Payment*/
   getPayments() {
     return this._http.get(this._payment);
@@ -168,8 +180,8 @@ export class PicknpayService {
     return this._http.post(this._payment, payment);
   }
 
-  deletePayment(id){
-    return this._http.delete(this._payment+"/"+id);
+  deletePayment(id) {
+    return this._http.delete(this._payment + "/" + id);
   }
 
   /*cart*/
@@ -180,7 +192,7 @@ export class PicknpayService {
   /*reference number*/
   setRef(num: number) {
     sessionStorage.setItem("refNum", JSON.stringify(num));
-  } 
+  }
 
   getRef() {
     return sessionStorage.getItem("refNum");
@@ -188,5 +200,17 @@ export class PicknpayService {
 
   removeRef() {
     sessionStorage.removeItem("refNum");
+  }
+
+  setTotItems(num: number) {
+    sessionStorage.setItem("totItems", JSON.stringify(num));
+  }
+
+  getTotItems(){
+    return sessionStorage.getItem("totItems");
+  }
+
+  removeTotItems() {
+    sessionStorage.removeItem("totItems");
   }
 }

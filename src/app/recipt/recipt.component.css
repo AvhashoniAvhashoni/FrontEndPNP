@@ -1,11 +1,12 @@
 .recipt {
-    margin-left: 30%;
-    margin-right: 30%;
+    margin-left: 25%;
+    margin-right: 25%;
     margin-top: 20px;
     margin-bottom: 20px;
     border: solid 1px #505050;
     padding: 20px;
     font-size: 16px;
+    background-color: white;
 }
 
 .recipt .heading {
@@ -17,12 +18,12 @@
 }
 
 .recipt .details {
-    font-size: 20px;
+    font-size: 16px;
     padding-right: 20px;
     margin-bottom: 15px;
 }
 
-.recipt .details span {
+.recipt .details .sp {
     float: right;
 }
 
@@ -31,8 +32,8 @@
     width: 100%;
 }
 
-.recipt table tr {
-    height: 23px;
+.recipt table tr td{
+    padding-bottom: 10px;
     text-transform: capitalize;
 }
 
@@ -42,10 +43,18 @@
 }
 
 .recipt .total span {
-    padding-left: 20%;
+    float: right;
+    padding-right: 75px;
     font-weight: bold;
 }
 
 .recipt .foot {
     text-align: center;
+}
+
+.btns {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
 }

@@ -13,4 +13,21 @@ export class TestingComponent implements OnInit {
   }
 
   selected = 'option2';
+
+
+  fileToUpload: File = null;
+  imageUrl = "";
+
+  handleFileInput(file :FileList) { 
+    this.fileToUpload = file.item(0);
+    console.log(this.fileToUpload )
+    var reader = new FileReader(); 
+    
+    reader.onload=(event:any)=>{ 
+      
+      this.imageUrl = event.target.result; 
+      console.log(this.imageUrl)
+    } 
+    reader.readAsDataURL(this.fileToUpload);
+}
 }

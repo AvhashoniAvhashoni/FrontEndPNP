@@ -18,6 +18,7 @@ export class SecurePayComponent implements OnInit {
   public cart: CartModModule;
   public customer: CustomerModule;
   public items: ItemsModModule;
+  totItems = 0;
 
   constructor(private _paymentService: PicknpayService, private router: Router) { }
 
@@ -50,11 +51,17 @@ export class SecurePayComponent implements OnInit {
 
     securePay.id = Object.keys(this.cart).length + 1;
 
+    for (let i = 0; i < Object.keys(this.items).length; i++) {
+      this.totItems = this.totItems + this.items[i].quantity;
+    }
+
+    this._paymentService.setTotItems(this.totItems);
+
     if (securePay.cvv != "" || securePay.cardnum != "" || securePay.exdate != "" || securePay.name != "")  {
       this.storeCart(securePay.id);
       this._paymentService.setPayment(securePay).subscribe((secPay) => {
         securePay = PaymentModModule,
-        this.killAllSessions();
+        this.router.navigate(["/app-recipt"])
       }, (error) => { });
     }
   }
@@ -66,7 +73,7 @@ export class SecurePayComponent implements OnInit {
       for (let i = 0; i < Object.keys(this.items).length; i++) {
         this.tempCart = {date: Date(), 
                           quantity: this.items[i].quantity,
-                          pid: paymentId, 
+                          pid: paymentId,
                           cid: this.customer.id,
                           iid: this.items[i].id,
                           ordernum: ordNum};
@@ -74,15 +81,5 @@ export class SecurePayComponent implements OnInit {
         }, (error) => { });
       }
     }
-  }
-
-  killAllSessions() {
-    this._paymentService.removeRef();
-    this._paymentService.endUser();
-    this._paymentService.removegetItemAdded();
-    this._paymentService.removeAisle();
-    this._paymentService.removeProduct();
-    this._paymentService.removeCartI();    
-    this.router.navigate(['/app-home']);
   }
 }
