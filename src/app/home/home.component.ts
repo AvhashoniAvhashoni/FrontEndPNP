@@ -2,7 +2,7 @@ import { Component, OnInit, DoCheck } from '@angular/core';
 import { PicknpayService } from '../picknpay.service';
 import { CustomerModule } from '../customer/customer.module';
 import { AisleModModule } from '../aisle-mod/aisle-mod.module';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 
 @Component({
@@ -22,6 +22,13 @@ export class HomeComponent implements OnInit, DoCheck {
   ngOnInit() {
     this.getUsers();
     this.getAisleData();
+
+    this.router.events.subscribe((evt) => {
+      if (!(evt instanceof NavigationEnd)) {
+          return;
+      }
+      window.scrollTo(0, 0)
+    });
   }
 
   getUsers() {

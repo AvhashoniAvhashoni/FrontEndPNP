@@ -104,12 +104,20 @@ export class PicknpayService {
     return this._http.get(this._item + "/fk/" + fk);
   }
 
+  getItem(id: number) {
+    return this._http.get(this._item + id);
+  }
+
   getItems() {
     return this._http.get(this._item);
   }
 
   postItem(item: ItemsModModule) {
     return this._http.post(this._item, item);
+  }
+
+  deletItem(id: number){
+    return this._http.delete(this._item + "/" + id);
   }
 
   addToTempCart(item: ItemsModModule) {
