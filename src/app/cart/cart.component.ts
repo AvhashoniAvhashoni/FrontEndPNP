@@ -44,7 +44,8 @@ export class CartComponent implements OnInit {
   }
 
   getfrmItms() {
-    this._cartService.getTempCart().subscribe((res) => this.itms = JSON.parse(res["_body"]));
+    this._cartService.getTempCart()
+      .subscribe((res) => this.itms = JSON.parse(res["_body"]));
   }
 
   addqty(item: ItemsModModule) {
@@ -91,7 +92,7 @@ export class CartComponent implements OnInit {
   }
 
   checkout() {
-    this.router.navigate(['/app-order'])
+    this.router.navigate(['/app-delivery'])
   }
 
   regCust() {

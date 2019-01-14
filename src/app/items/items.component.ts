@@ -98,4 +98,9 @@ export class ItemsComponent implements OnInit {
     this._itemService.getItemByFk(this.prd.id)
       .subscribe((res) => this.itms = JSON.parse(res["_body"]));
   }
+
+  setItem(item: ItemsModModule) {
+    this._itemService.set1Item(item);
+    //this.router.navigate(["/app-item"]);
+  }
 }

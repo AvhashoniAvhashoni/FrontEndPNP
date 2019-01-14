@@ -45,13 +45,14 @@
       <div class="region">
         <p>Region</p>
         <mat-form-field>
-            <select matNativeControl required>
-              <option value="volvo">Volvo</option>
-              <option value="saab">Saab</option>
-              <option value="mercedes">Mercedes</option>
-              <option value="audi">Audi</option>
-            </select>
-          </mat-form-field>
+          <mat-select [(value)]="selected" style="text-transform: uppercase">
+            <mat-option disabled>PLEASE SELECT A REGION</mat-option>
+            <mat-option *ngFor="let r of region" value={{r.name}} (click)="selectStore(r.id)" style="text-transform: uppercase">{{r.name}}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div *ngFor="let s of store">
+          {{s?.name}}<br/>
+        </div>
       </div>
       
     </div>

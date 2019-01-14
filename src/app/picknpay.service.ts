@@ -22,6 +22,8 @@ export class PicknpayService {
   private _item: string = "http://localhost:8080/item/";
   private _payment: string = "http://localhost:8080/payment/";
   private _cart: string = "http://localhost:8080/cart/";
+  private _region: string = "http://localhost:8080/region/";
+  private _store: string = "http://localhost:8080/store/";
 
   constructor(private _http: Http) { }
 
@@ -41,6 +43,7 @@ export class PicknpayService {
     this.removeCartI();
     this.removeTotalCost();
     this.removeTotItems();
+    this.remove1Item();
     this.removeTempCart();
     sessionStorage.removeItem("user");
   }
@@ -114,6 +117,18 @@ export class PicknpayService {
 
   postItem(item: ItemsModModule) {
     return this._http.post(this._item, item);
+  }
+
+  set1Item(item: ItemsModModule) {
+    localStorage.setItem("1Item", JSON.stringify(item));
+  }
+
+  get1Item() {
+    return localStorage.getItem("1Item");
+  }
+
+  remove1Item() {
+    localStorage.removeItem("1Item");
   }
 
   deletItem(id: number){
@@ -220,5 +235,19 @@ export class PicknpayService {
 
   removeTotItems() {
     sessionStorage.removeItem("totItems");
+  }
+
+  /*Region*/
+  getRegion() {
+    return this._http.get(this._region);
+  }
+
+  /*store*/
+  getStore() {
+    return this._http.get(this._store);
+  }
+
+  getStoreByFk(fk: number) {
+    return this._http.get(this._store + "fk/" + fk);
   }
 }
