@@ -10,6 +10,7 @@ import { ItemsModModule } from './items-mod/items-mod.module';
 import { from } from 'rxjs';
 import { PaymentModModule } from './payment-mod/payment-mod.module';
 import { CartModModule } from './cart-mod/cart-mod.module';
+import { DeliveryModModule } from './delivery-mod/delivery-mod.module';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,7 @@ export class PicknpayService {
   private _cart: string = "http://localhost:8080/cart/";
   private _region: string = "http://localhost:8080/region/";
   private _store: string = "http://localhost:8080/store/";
+  private _delivery: string = "http://localhost:8080/delivery/";
 
   constructor(private _http: Http) { }
 
@@ -45,6 +47,7 @@ export class PicknpayService {
     this.removeTotItems();
     this.remove1Item();
     this.removeTempCart();
+    this.removeDelivery();
     sessionStorage.removeItem("user");
   }
 
@@ -249,5 +252,36 @@ export class PicknpayService {
 
   getStoreByFk(fk: number) {
     return this._http.get(this._store + "fk/" + fk);
+  }
+
+  /*forget password*/
+  rstPassword(email: string) {
+    return this._http.get(this._url + "resetPassword/" + email);
+  }
+
+  /*delivery*/
+  setDelivery(delivery: DeliveryModModule){
+    localStorage.setItem("del1", JSON.stringify(delivery));
+  }
+
+  getDelivery() {
+    return JSON.parse(localStorage.getItem("del1"));
+  }
+
+  removeDelivery() {
+    localStorage.removeItem("del1");
+  }
+
+  getAllDeliveries() {
+    return this._http.get(this._delivery)
+  }
+
+  postDelivery(delivery: DeliveryModModule) {
+    return this._http.post(this._delivery, delivery)
+  }
+
+  /*payment*/
+  proofOfPayment(email: string, message: string) {
+    return this._http.get(this._payment + "proof/" + email + "/" + message);
   }
 }

@@ -14,5 +14,6 @@ export class CartModModule {
   cid: number;
   iid: number;
   pid: number;
+  did: number;
   ordernum: number;
 }

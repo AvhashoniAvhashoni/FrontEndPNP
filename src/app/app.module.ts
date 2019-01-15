@@ -40,6 +40,7 @@ import { UpdateItemComponent } from './update-item/update-item.component';
 import { DeleteItemComponent } from './delete-item/delete-item.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReciptComponent } from './recipt/recipt.component';
+import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { ReciptComponent } from './recipt/recipt.component';
     UpdateItemComponent,
     DeleteItemComponent,
     NotFoundComponent,
-    ReciptComponent
+    ReciptComponent,
+    ForgetPasswordComponent
   ],
   imports: [
     BrowserModule,

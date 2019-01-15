@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ItemsModModule } from '../items-mod/items-mod.module';
 import * as jsPDF from "jspdf";
 import { CustomerModule } from '../customer/customer.module';
+import { DeliveryModModule } from '../delivery-mod/delivery-mod.module';
 
 @Component({
   selector: 'app-recipt',
@@ -14,6 +15,7 @@ export class ReciptComponent implements OnInit {
 
   public items: ItemsModModule;
   public customer: CustomerModule;
+  public delivery: DeliveryModModule;
 
   refNum = null;
   numItms = "";
@@ -33,6 +35,8 @@ export class ReciptComponent implements OnInit {
       this._router.navigate(['/app-home']);
     } 
     this.customer = this._reciptService.getUser();
+
+    this.delivery = this._reciptService.getDelivery();
   }
 
   signOut() {
@@ -46,5 +50,10 @@ export class ReciptComponent implements OnInit {
     doc.addHTML(document.getElementsByClassName('recipt'), function() {
       doc.save(name); 
     });
+  }
+
+  pop() {
+    this._reciptService.proofOfPayment(this.customer.email, "Reference number for items purchased on " + Date() + " is: " + this.refNum)
+    .subscribe(res => {}); 
   }
 }

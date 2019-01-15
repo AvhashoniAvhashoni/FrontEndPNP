@@ -23,7 +23,6 @@ export class HeaderComponent implements OnInit, DoCheck {
     if (this.numItmz == null) {
       this.numItmz = 0;
     } 
-    
     this.cust = this._headerService.getUser();
   }
 
@@ -50,5 +49,17 @@ export class HeaderComponent implements OnInit, DoCheck {
   signOut() {
     this._headerService.endUser();
     this.router.navigate(['/app-home']);
+  }
+
+  delivery() {
+    if (this.cust) {
+      if (this.numItmz > 0) {
+        this.router.navigate(['/app-delivery']);
+      } else {
+        this.router.navigate(['/app-not-found']);
+      }
+    } else {
+      this.router.navigate(['/app-login']);
+    }
   }
 }

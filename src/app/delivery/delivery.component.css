@@ -99,3 +99,35 @@
     border-right: 135px solid transparent;
     background-color: #fff;
 }
+
+.trolley form {
+    border: solid 1px #ccc;
+    width: 97%;
+    margin-top: 20px;
+    padding: 50px;
+}
+
+.trolley form input {
+    width: 550px;
+    height: 35px;
+    font-size: 15px;
+    padding: 10px;
+}
+
+.trolley form p {
+    font-family: Arial, sans-serif, Helvetica;
+    font-size: 15px;
+    color: #929292;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+.trolley form button {
+    width: 250px;
+    height: 40px;
+    font-size: 15px;
+    color: #fff;
+    background-color: #b9154a;
+    font-weight: bold;
+}

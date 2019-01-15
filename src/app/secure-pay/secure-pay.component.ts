@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { CartModModule } from '../cart-mod/cart-mod.module';
 import { CustomerModule } from '../customer/customer.module';
 import { ItemsModModule } from '../items-mod/items-mod.module';
+import { DeliveryModModule } from '../delivery-mod/delivery-mod.module';
 
 @Component({
   selector: 'app-secure-pay',
@@ -18,6 +19,8 @@ export class SecurePayComponent implements OnInit {
   public cart: CartModModule;
   public customer: CustomerModule;
   public items: ItemsModModule;
+  public delivery: DeliveryModModule;
+
   totItems = 0;
 
   constructor(private _paymentService: PicknpayService, private router: Router) { }
@@ -25,10 +28,13 @@ export class SecurePayComponent implements OnInit {
   ngOnInit() {
     this._paymentService.getTempCart()
       .subscribe((res) => this.items  = JSON.parse(res["_body"]));
+   
     this.customer = this._paymentService.getUser();
 
     this._paymentService.getPayments()
           .subscribe((res) => this.cart  = JSON.parse(res["_body"]));
+
+    this.delivery = this._paymentService.getDelivery();
     
     if (this.customer  == null || this._paymentService.getCartI() == null) {
       this.router.navigate(['/app-not-found']);
@@ -59,6 +65,7 @@ export class SecurePayComponent implements OnInit {
 
     if (securePay.cvv != "" || securePay.cardnum != "" || securePay.exdate != "" || securePay.name != "")  {
       this.storeCart(securePay.id);
+      this.storeAddress();
       this._paymentService.setPayment(securePay).subscribe((secPay) => {
         securePay = PaymentModModule,
         this.router.navigate(["/app-recipt"])
@@ -76,10 +83,15 @@ export class SecurePayComponent implements OnInit {
                           pid: paymentId,
                           cid: this.customer.id,
                           iid: this.items[i].id,
+                          did: this.delivery.id,
                           ordernum: ordNum};
         this._paymentService.saveCart(this.tempCart).subscribe((cart) => {
         }, (error) => { });
       }
     }
+  }
+
+  storeAddress() {
+    this._paymentService.postDelivery(this.delivery).subscribe((res) => {}, (error) => {});
   }
 }
