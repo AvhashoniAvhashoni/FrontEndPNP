@@ -15,11 +15,13 @@ import { _def } from '@angular/core/src/view/provider';
 export class DeliveryComponent implements OnInit {
 
   public delivery: DeliveryModModule;
+  add = 0;
   constructor(private _deliveryService: PicknpayService, private router: Router){}
 
   ngOnInit() {
     this._deliveryService.getAllDeliveries()
         .subscribe((res) => {this.delivery = JSON.parse(res["_body"])});
+    this.add;
   }
 
   addr = new FormGroup({
@@ -35,6 +37,10 @@ export class DeliveryComponent implements OnInit {
       this._deliveryService.setDelivery(this.addr.value);
       this.router.navigate(["/app-order"])
     }
+  }
+
+  addAddr() {
+    this.add = 1;
   }
 }
 /*public region: RegionModule;

@@ -215,6 +215,10 @@ export class PicknpayService {
     return this._http.post(this._cart, cart);
   }
 
+  getCart() {
+    return this._http.get(this._cart);
+  }
+
   /*reference number*/
   setRef(num: number) {
     sessionStorage.setItem("refNum", JSON.stringify(num));
@@ -283,5 +287,10 @@ export class PicknpayService {
   /*payment*/
   proofOfPayment(email: string, message: string) {
     return this._http.get(this._payment + "proof/" + email + "/" + message);
+  }
+
+  /*items*/
+  putItem(id: number, item: ItemsModModule) {
+    return this._http.put(this._item + id, item);
   }
 }

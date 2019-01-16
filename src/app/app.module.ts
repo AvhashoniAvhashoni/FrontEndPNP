@@ -41,6 +41,8 @@ import { DeleteItemComponent } from './delete-item/delete-item.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReciptComponent } from './recipt/recipt.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { DeliveryGuyComponent } from './delivery-guy/delivery-guy.component';
+import { SupplierComponent } from './supplier/supplier.component';
 
 @NgModule({
   declarations: [
@@ -73,7 +75,9 @@ import { ForgetPasswordComponent } from './forget-password/forget-password.compo
     DeleteItemComponent,
     NotFoundComponent,
     ReciptComponent,
-    ForgetPasswordComponent
+    ForgetPasswordComponent,
+    DeliveryGuyComponent,
+    SupplierComponent
   ],
   imports: [
     BrowserModule,

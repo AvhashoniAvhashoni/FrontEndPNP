@@ -61,19 +61,21 @@
     </div>
   </div>-->
   <form [formGroup]="addr" (submit)="createAddr()">
-    <button mat-button>ADD AN ADDRESSS</button>
+    <button type="button" mat-button (click)="addAddr()">ADD AN ADDRESSS</button>
 
-    <p>*Type your full street address:</p>
-    <input type="address" id="address" required formControlName="address" placeholder="40, street name, suburb, city">
+    <div *ngIf="add == 1">
+      <p>*Type your full street address:</p>
+      <input type="address" id="address" required formControlName="address" placeholder="40, street name, suburb, city">
 
-    <p>Apartment, Building, Floor and/or Company Name:</p>
-    <input type="name" id="name" required formControlName="name" >
+      <p>Apartment, Building, Floor and/or Company Name:</p>
+      <input type="name" id="name" required formControlName="name" >
 
-    <p>Address nickname:</p>
-    <input type="nickname" id="nickname" required formControlName="nickname" placeholder="e.g. Home">
+      <p>Address nickname:</p>
+      <input type="nickname" id="nickname" required formControlName="nickname" placeholder="e.g. Home">
 
-    <br/>
-    <button mat-button style="margin-top:50px;">SUBMIT</button>
+      <br/>
+      <button mat-button style="margin-top:50px;">SUBMIT</button>
+    </div>
   </form>
 </div>
 <app-footer></app-footer>

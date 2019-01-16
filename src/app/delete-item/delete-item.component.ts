@@ -47,4 +47,9 @@ export class DeleteItemComponent implements OnInit {
     this._deleteService.getItems()
       .subscribe(res => this.items = JSON.parse(res["_body"]));
   }
+
+  logout() {
+    this._deleteService.endUser();
+    this.router.navigate(["/app-home"]);
+  }
 }

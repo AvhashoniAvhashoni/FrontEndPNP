@@ -22,4 +22,5 @@ export class ItemsModModule {
   weight: string;
   pid: number;
   quantity: number;
+  itemsavailable: number;
 }

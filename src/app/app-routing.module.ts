@@ -31,6 +31,8 @@ import { DeleteItemComponent } from './delete-item/delete-item.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { ReciptComponent } from './recipt/recipt.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
+import { DeliveryGuyComponent } from './delivery-guy/delivery-guy.component';
+import { SupplierComponent } from './supplier/supplier.component';
 
 const routes: Routes = [
   {path:'', pathMatch:'full', redirectTo:'app-home'},
@@ -64,6 +66,8 @@ const routes: Routes = [
   {path: 'app-delete-item', component:DeleteItemComponent},
   {path: 'app-recipt', component:ReciptComponent},
   {path: 'app-forget-password', component:ForgetPasswordComponent},
+  {path: 'app-delivery-guy', component:DeliveryGuyComponent},
+  {path: 'app-supplier', component:SupplierComponent},
   {path: '**', component:NotFoundComponent},  
 ];
 

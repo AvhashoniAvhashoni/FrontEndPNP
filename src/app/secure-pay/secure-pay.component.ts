@@ -19,6 +19,7 @@ export class SecurePayComponent implements OnInit {
   public cart: CartModModule;
   public customer: CustomerModule;
   public items: ItemsModModule;
+  public itemz: ItemsModModule;
   public delivery: DeliveryModModule;
 
   totItems = 0;
@@ -39,6 +40,9 @@ export class SecurePayComponent implements OnInit {
     if (this.customer  == null || this._paymentService.getCartI() == null) {
       this.router.navigate(['/app-not-found']);
     }
+
+    this._paymentService.getItems()
+    .subscribe((res) => this.itemz  = JSON.parse(res["_body"]));
   }
 
   payment = new FormGroup ({
@@ -65,6 +69,7 @@ export class SecurePayComponent implements OnInit {
 
     if (securePay.cvv != "" || securePay.cardnum != "" || securePay.exdate != "" || securePay.name != "")  {
       this.storeCart(securePay.id);
+      this.putItem();
       this.storeAddress();
       this._paymentService.setPayment(securePay).subscribe((secPay) => {
         securePay = PaymentModModule,
@@ -93,5 +98,18 @@ export class SecurePayComponent implements OnInit {
 
   storeAddress() {
     this._paymentService.postDelivery(this.delivery).subscribe((res) => {}, (error) => {});
+  }
+
+  putItem() {
+    for (let i = 0; i < Object.keys(this.itemz).length; i++) {
+      for (let j = 0; j < Object.keys(this.items).length; j++) {
+        if (this.items[j].id == this.itemz[i].id) {
+          this.itemz[i].itemsavailable = this.itemz[i].itemsavailable - this.items[j].quantity;
+          console.log(this.itemz[i]);
+          this._paymentService.putItem(this.itemz[i].id, this.itemz[i])
+            .subscribe(res => {})
+        }
+      }
+    }
   }
 }

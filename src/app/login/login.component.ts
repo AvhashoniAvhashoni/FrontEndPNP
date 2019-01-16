@@ -33,9 +33,22 @@ export class LoginComponent implements OnInit {
 
     this._pnpService.getCustomerLogin(email, password)
       .subscribe((resCustomerData) => 
-      {this.cust = resCustomerData
-        this._pnpService.setUser(this.cust),
-        this.router.navigate(['/app-home'])
+      {this.cust = resCustomerData;
+        this._pnpService.setUser(this.cust);
+        if (email == "delivery123Guy@gmails.com") {
+          this.router.navigate(['/app-delivery-guy']);
+        } else {
+          if (email == "admin123Guy@gmails.com"){
+            this.router.navigate(['/app-admin-home']);
+          } else {
+            if (email == "supplier123Guy@gmails.com") {
+              this.router.navigate(['/app-supplier'])
+            } else {
+              this.router.navigate(['/app-home'])
+            }
+          }
+        }
+        
     });
   }
 }

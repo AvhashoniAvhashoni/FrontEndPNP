@@ -68,4 +68,9 @@ export class AddItemComponent implements OnInit {
       this.router.navigate(['/app-admin-home'])
       }, (error) => { });
   }
+
+  logout() {
+    this._itemAddService.endUser();
+    this.router.navigate(["/app-home"]);
+  }
 }
