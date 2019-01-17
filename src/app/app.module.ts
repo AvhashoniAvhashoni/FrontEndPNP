@@ -43,6 +43,8 @@ import { ReciptComponent } from './recipt/recipt.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { DeliveryGuyComponent } from './delivery-guy/delivery-guy.component';
 import { SupplierComponent } from './supplier/supplier.component';
+import { MatDialogModule } from '@angular/material';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +79,8 @@ import { SupplierComponent } from './supplier/supplier.component';
     ReciptComponent,
     ForgetPasswordComponent,
     DeliveryGuyComponent,
-    SupplierComponent
+    SupplierComponent,
+    DialogComponent,
   ],
   imports: [
     BrowserModule,
@@ -87,7 +90,11 @@ import { SupplierComponent } from './supplier/supplier.component';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    NgMatSearchBarModule
+    NgMatSearchBarModule,
+    MatDialogModule,
+  ],
+  entryComponents: [
+    DialogComponent,
   ],
   providers: [PicknpayService],
   bootstrap: [AppComponent]

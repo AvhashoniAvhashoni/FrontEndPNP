@@ -105,7 +105,6 @@ export class SecurePayComponent implements OnInit {
       for (let j = 0; j < Object.keys(this.items).length; j++) {
         if (this.items[j].id == this.itemz[i].id) {
           this.itemz[i].itemsavailable = this.itemz[i].itemsavailable - this.items[j].quantity;
-          console.log(this.itemz[i]);
           this._paymentService.putItem(this.itemz[i].id, this.itemz[i])
             .subscribe(res => {})
         }

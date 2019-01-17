@@ -5,6 +5,8 @@ import { ItemsModModule } from '../items-mod/items-mod.module';
 import * as jsPDF from "jspdf";
 import { CustomerModule } from '../customer/customer.module';
 import { DeliveryModModule } from '../delivery-mod/delivery-mod.module';
+import { MatDialog } from '@angular/material';
+import { DialogComponent } from '../dialog/dialog.component';
 
 @Component({
   selector: 'app-recipt',
@@ -22,7 +24,7 @@ export class ReciptComponent implements OnInit {
   date = new Date();
   totCost = "";
 
-  constructor(private _reciptService: PicknpayService, private _router: Router) { }
+  constructor(private _reciptService: PicknpayService, private _router: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
     
@@ -54,6 +56,16 @@ export class ReciptComponent implements OnInit {
 
   pop() {
     this._reciptService.proofOfPayment(this.customer.email, "Reference number for items purchased on " + Date() + " is: " + this.refNum)
-    .subscribe(res => {}); 
+    .subscribe(res => {this.openDialog()}); 
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {
+        userMail: this.customer.email
+      }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {});
   }
 }

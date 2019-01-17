@@ -3,6 +3,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 import { PicknpayService } from '../picknpay.service';
 import { Router } from '@angular/router';
 import { CustomerModule } from '../customer/customer.module';
+import { DialogComponent } from '../dialog/dialog.component';
+import { MatDialog } from '@angular/material';
 
 @Component({
   selector: 'app-forget-password',
@@ -13,7 +15,7 @@ export class ForgetPasswordComponent implements OnInit {
 
   public cust: CustomerModule;
 
-  constructor(private _pnpService: PicknpayService, private router: Router) { }
+  constructor(private _pnpService: PicknpayService, private router: Router, public dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -24,6 +26,16 @@ export class ForgetPasswordComponent implements OnInit {
 
   getPassword() {
     this._pnpService.rstPassword(this.userData.controls['email'].value)
-      .subscribe(res => this.router.navigate(["/app-home"]));
+      .subscribe(res => this.openDialog());
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogComponent, {
+      data: {
+        userMail: this.userData.controls['email'].value
+      }
+    });
+  
+    dialogRef.afterClosed().subscribe(result => {this.router.navigate(["/app-home"])});
   }
 }
