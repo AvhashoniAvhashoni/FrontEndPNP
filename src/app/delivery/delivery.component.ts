@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { PicknpayService } from '../picknpay.service';
-import { RegionModule } from '../region/region.module';
-import { StoreModule } from '../store/store.module';
 import { FormControl, FormGroup } from '@angular/forms';
 import { DeliveryModModule } from '../delivery-mod/delivery-mod.module';
 import { Router } from '@angular/router';
