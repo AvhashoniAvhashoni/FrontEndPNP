@@ -40,6 +40,8 @@ import { DeliveryGuyComponent } from './delivery-guy/delivery-guy.component';
 import { SupplierComponent } from './supplier/supplier.component';
 import { MatDialogModule } from '@angular/material';
 import { DialogComponent } from './dialog/dialog.component';
+import { RecipesComponent } from './recipes/recipes.component';
+import { InspirationComponent } from './inspiration/inspiration.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +73,8 @@ import { DialogComponent } from './dialog/dialog.component';
     DeliveryGuyComponent,
     SupplierComponent,
     DialogComponent,
+    RecipesComponent,
+    InspirationComponent,
   ],
   imports: [
     BrowserModule,

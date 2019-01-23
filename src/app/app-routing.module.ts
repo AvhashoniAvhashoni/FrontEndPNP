@@ -28,6 +28,8 @@ import { ReciptComponent } from './recipt/recipt.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 import { DeliveryGuyComponent } from './delivery-guy/delivery-guy.component';
 import { SupplierComponent } from './supplier/supplier.component';
+import { RecipesComponent } from './recipes/recipes.component';
+import { InspirationComponent } from './inspiration/inspiration.component';
 
 const routes: Routes = [
   {path:'', pathMatch:'full', redirectTo:'app-home'},
@@ -57,6 +59,8 @@ const routes: Routes = [
   {path: 'app-forget-password', component:ForgetPasswordComponent},
   {path: 'app-delivery-guy', component:DeliveryGuyComponent},
   {path: 'app-supplier', component:SupplierComponent},
+  {path: 'app-recipes', component:RecipesComponent},
+  {path: 'app-inspiration', component:InspirationComponent},
   {path: '**', component:NotFoundComponent},  
 ];
 
