@@ -118,3 +118,11 @@
 ol.carousel-indicators li.active {
     background: #fff;
 }
+
+.carousel {
+	height: 100%;
+	width: 100%;
+  	margin: 0 auto;
+  	overflow: hidden;
+  	position: relative;
+}
